@@ -1,0 +1,42 @@
+# https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+.DS_Store?
+.DS_Store
+
+Icon?
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+# https://github.com/github/gitignore/blob/master/Global/NetBeans.gitignore
+nbproject/
+
+# https://github.com/github/gitignore/blob/master/Maven.gitignore
+target/
+
+# https://github.com/github/gitignore/blob/master/Java.gitignore
+*.class
+
+# https://github.com/github/gitignore/blob/master/Global/TextMate.gitignore
+*.tmproj
+*.tmproject
+tmtags
+
+# https://github.com/github/gitignore/blob/master/Global/Vi.gitignore
+*.swp
+*.swo
+
+# https://github.com/github/gitignore/blob/master/Global/vim.gitignore
+.*.sw[a-z]
+*.un~
+
+# compass css
+.sass-cache/
+
+# custom prefixes
+~~*
+/Brand/src/main/webapp/WEB-INF/.sass-cache/
+/Brand/target/
