@@ -40,3 +40,6 @@ tmtags
 ~~*
 /Brand/src/main/webapp/WEB-INF/.sass-cache/
 /Brand/target/
+
+# live reload
+.livereload
