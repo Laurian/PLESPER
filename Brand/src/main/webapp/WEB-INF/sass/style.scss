@@ -1,19 +1,82 @@
-// HTML5 ✰ Boilerplate
+@import "compass/css3";
+
+$mercury:	rgb(235,235,235);
+
+@import "partials/solarized";
+
 // split: https://github.com/darktable/html5-boilerplate/commit/b125225228a42a046930dc8c7e1861ef3b8acc14 
 @import "partials/normalize";
-@import "partials/solarized";
+@import "partials/isotope";
 @import "partials/primary";
 
-/////
+///
 
-body {
+
+$headerHeight:	62px;
+
+body {	
 	>header {
-		height:	162px;
+		@include single-box-shadow; 		
+		
+		position:	fixed;
+		z-index:	1024;
+		
+		height:		$headerHeight;
+		width:		100%;
+		
+		padding:	0 22px;
 				
-		background-color:	black;
+		background-color:	rgba(0, 0, 0, .9);
 		border:	1px solid	transparent;
+		
+		h1 {
+			font-weight:	normal;
+			color:			$mercury;
+		}
 	}
 }
+
+#page {
+	padding-top: $headerHeight;
+}
+
+#deck {
+	margin:	16px 16px 0 16px;
+	
+	> div {
+		//@include single-box-shadow;
+		@include box-shadow(#ccc 0px 0px 10px);
+		//@include border-radius(4px);
+		background-color:	white;
+		
+		width: 110px;
+		height: 110px;
+		margin: 5px;
+		float: left;
+		overflow: hidden;
+		position: relative;
+			
+		>* {
+			position: absolute;
+			margin: 0;
+		}
+		
+		article {
+			padding:	5px;
+			width:		100%;
+			h1 {
+				margin:		0;
+				padding:	0;
+				font-size:	12px;
+			}
+		}
+	}
+}
+
+
+
+
+
 
 /////
 

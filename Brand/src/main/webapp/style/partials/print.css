@@ -1,0 +1,73 @@
+/* =============================================================================
+   Print styles.
+   Inlined to avoid required HTTP connection: www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+@media print {
+  /* line 7, ../../WEB-INF/sass/partials/print.scss */
+  * {
+    background: transparent !important;
+    color: black !important;
+    text-shadow: none !important;
+    filter: none !important;
+    -ms-filter: none !important;
+  }
+
+  /* Black prints faster: sanbeiji.com/archives/953 */
+  /* line 8, ../../WEB-INF/sass/partials/print.scss */
+  a, a:visited {
+    text-decoration: underline;
+  }
+
+  /* line 9, ../../WEB-INF/sass/partials/print.scss */
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  /* line 10, ../../WEB-INF/sass/partials/print.scss */
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  /* line 11, ../../WEB-INF/sass/partials/print.scss */
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+    content: "";
+  }
+
+  /* Don't show links for images, or javascript/internal links */
+  /* line 12, ../../WEB-INF/sass/partials/print.scss */
+  pre, blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /* line 13, ../../WEB-INF/sass/partials/print.scss */
+  thead {
+    display: table-header-group;
+  }
+
+  /* css-discuss.incutio.com/wiki/Printing_Tables */
+  /* line 14, ../../WEB-INF/sass/partials/print.scss */
+  tr, img {
+    page-break-inside: avoid;
+  }
+
+  /* line 15, ../../WEB-INF/sass/partials/print.scss */
+  img {
+    max-width: 100% !important;
+  }
+
+  @page {
+    margin: 0.5cm;
+}
+
+  /* line 17, ../../WEB-INF/sass/partials/print.scss */
+  p, h2, h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* line 18, ../../WEB-INF/sass/partials/print.scss */
+  h2, h3 {
+    page-break-after: avoid;
+  }
+}

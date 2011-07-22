@@ -1,0 +1,56 @@
+/* Start: Recommended Isotope styles */
+/**** Isotope Filtering ****/
+/* line 5, ../../WEB-INF/sass/partials/isotope.scss */
+.isotope-item {
+  z-index: 2;
+}
+
+/* line 9, ../../WEB-INF/sass/partials/isotope.scss */
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+/* line 17, ../../WEB-INF/sass/partials/isotope.scss */
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+
+/* line 23, ../../WEB-INF/sass/partials/isotope.scss */
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  transition-property: height, width;
+}
+
+/* line 29, ../../WEB-INF/sass/partials/isotope.scss */
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property: -moz-transform, opacity;
+  transition-property: transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+/* line 39, ../../WEB-INF/sass/partials/isotope.scss */
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+/* disable CSS transitions for containers with infinite scrolling*/
+/* line 50, ../../WEB-INF/sass/partials/isotope.scss */
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+  -moz-transition: none;
+  transition: none;
+}
+
+/**** Isotope styles ****/

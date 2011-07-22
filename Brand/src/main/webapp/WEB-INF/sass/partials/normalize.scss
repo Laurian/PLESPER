@@ -44,17 +44,22 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
  * Also: hot pink!
  */
 
-::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
-::selection { background: #fe57a1; color: #fff; text-shadow: none; }
+//::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
+//::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 
+::-moz-selection { background: $base03; text-shadow: none; }
+::selection { background: $base03; text-shadow: none; }
 
 /* =============================================================================
    Links
    ========================================================================== */
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
-a:focus { outline: thin dotted; }
+//a { color: #00e; }
+//a:visited { color: #551a8b; }
+//a:focus { outline: thin dotted; }
+a { color: $blue; }
+a:visited { color: $violet; }
+a:focus { outline: 1px dotted white; }
 
 /* Improve readability when focused and hovered in all browsers: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: 0; }

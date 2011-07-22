@@ -23,6 +23,7 @@
 
 	<!-- CSS: implied media="all" -->
 	<link rel="stylesheet" href="style/style.css">
+	<link type="text/css" href="style/smoothness/jquery-ui-1.8.14.custom.css">	
 
 	<!-- More ideas for your <head> here: h5bp.com/docs/#head-Tips -->
 
@@ -37,23 +38,173 @@
 		<h1>PLEXPER</h1>
 	</header>	
 	
-	<div id="container">
-		<p>content</p>
+	<div id="page">
+		
+	<div id="deck">
+		
 	</div>
 	
-	<footer>
-		<p>footer</p>
-	</footer>
-	<!--! end of #container -->
+	<!-- <div id="demo">
+				<div class="window" id="window1">window one</div>
+				<div class="window" id="window2">window two</div>
+				<div class="window" id="window3">window three</div>
+				<div class="window" id="window4">window four</div>
+				<div class="window" id="window5">window five</div>
+				<div class="window" id="window6">window six</div>
+			</div>
+			<style>
+			.window { 
+				border:0.1em dotted #d4e06b; 
+				opacity:0.8; 
+				filter:alpha(opacity=80); 
+				width:14em; height:4em; 
+				z-index:20; 
+				position:absolute; 
+				color:black;
+				font-family:helvetica, sans;
+				padding-top:0.9em; 
+				font-size:0.9em;
+				text-align:center;
+				background-color:white;
+			}
+			#window1 { left:20em;}
+			#window2 { left:10em;top:12em;}
+			#window3 { left:40em;top:12em;}
+			#window4 { left:4em;top:24em;}
+			#window5 { left:22em;top:24em;}
+			#window6 { left:47em;top:24em;}
+			#window7 { top:18em;left:40em;}
+			#window8 { left:63em;top:32em;}
+			</style> -->
+	
+	<div>
+		
+		<div id="cse" style="width: 100%;">Loading</div>
+		<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+		<script type="text/javascript"> 
+		  google.load('search', '1', {language : 'en'});
+		  google.setOnLoadCallback(function() {
+		    var customSearchControl = new google.search.CustomSearchControl('013519187268247392580:xfaeneoqdwu');
+		    customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+		    var options = new google.search.DrawOptions();
+		    options.setAutoComplete(true);    
+		    customSearchControl.draw('cse', options);
+		  }, true);
+		</script>
+		<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
+		<link rel="stylesheet" href="style/google.css">
+		 
+	</div>
+	</div>
+
 	<!-- JavaScript at the bottom for fast page loading -->
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="script/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
 	<!-- scripts concatenated and minified via ant build script-->
+	<script src="script/libs/jquery.isotope.js"></script>
+	<script src="script/libs/jquery-ui-1.8.14.custom.js"></script>
+	<script src="script/libs/jquery.jsPlumb-1.3.1-all.js"></script>
+	
 	<script src="script/plugins.js"></script>
 	<script src="script/script.js"></script>
 	<!-- end scripts-->
+	
+	<script>
+	$(function(){
+		$('#deck').isotope({
+				animationOptions: {
+				    duration: 250,
+				    easing: 'linear',
+				    queue: false,
+					itemPositionDataEnabled: true
+				}
+		});
+				
+		$('.gsc-result').live('click', function(event){
+			if (event.target.nodeName == "A") return;
+
+			$article = $('<article></article>');
+			$title = $('<h1></h1>')
+				.text($(this).find('.gs-title').text());
+			$body = $('<p></p>')
+				.text($(this).find('.gs-snippet').text());
+			
+			$article.append($title).append($body);
+			
+			$element = $('<div></div>')
+				.append($article);
+			$('#deck').isotope('insert', $element);
+		});			
+
+		
+	});
+	
+	// ///
+	// ;(function() {
+	// 
+	// 	window.jsPlumbDemo = {
+	// 
+	// 		init : function() {			
+	// 
+	// 			var fillColor = "gray";
+	// 			// notice the 'curviness' argument to this Bezier curve.  the curves on this page are far smoother
+	// 			// than the curves on the first demo, which use the default curviness value.
+	// 			jsPlumb.Defaults.Connector = [ "Bezier", { curviness:50 } ];
+	// 			jsPlumb.Defaults.DragOptions = { cursor: "pointer", zIndex:2000 };
+	// 			jsPlumb.Defaults.PaintStyle = { strokeStyle:"gray", lineWidth:2 };
+	// 			jsPlumb.Defaults.EndpointStyle = { radius:9, fillStyle:"gray" };
+	// 			jsPlumb.Defaults.Anchors =  [ "BottomCenter", "TopCenter" ];
+	// 
+	// 			// declare some common values:
+	// 			var arrowCommon = { foldback:0.7, fillStyle:fillColor, width:14 };
+	// 			// use three-arg spec to create two different arrows with the common values:
+	// 			var overlays = [
+	// 				[ "Arrow", { location:0.7 }, arrowCommon ],
+	// 				[ "Arrow", { location:0.3, direction:-1 }, arrowCommon ]
+	// 			];
+	// 
+	// 			jsPlumb.connect({source:"window3", target:"window6", overlays:overlays});
+	// 			jsPlumb.connect({source:"window1", target:"window2", overlays:overlays});
+	// 			jsPlumb.connect({source:"window1", target:"window3", overlays:overlays});
+	// 			jsPlumb.connect({source:"window2", target:"window4", overlays:overlays});
+	// 			jsPlumb.connect({source:"window2", target:"window5", overlays:overlays});
+	// 		}
+	// 	};
+	// 
+	// })();
+	// 
+	// ///
+	// 
+	// jsPlumb.bind("ready", function() {
+	// 
+	// 	// chrome fix.
+	// 	document.onselectstart = function () { return false; };				
+	// 
+	//     // render mode
+	// 	var resetRenderMode = function(desiredMode) {
+	// 		var newMode = jsPlumb.setRenderMode(desiredMode);
+	// 		$(".rmode").removeClass("selected");
+	// 		$(".rmode[mode='" + newMode + "']").addClass("selected");
+	// 		var disableList = (newMode === jsPlumb.VML) ? ".rmode[mode='canvas'],.rmode[mode='svg']" : ".rmode[mode='vml']"; 
+	// 		$(disableList).attr("disabled", true);				
+	// 		jsPlumbDemo.init();
+	// 	};
+	// 
+	// 	$(".rmode").bind("click", function() {
+	// 		var desiredMode = $(this).attr("mode");
+	// 		if (jsPlumbDemo.reset) jsPlumbDemo.reset();
+	// 		jsPlumb.reset();
+	// 		resetRenderMode(desiredMode);					
+	// 	});
+	// 
+	// 	resetRenderMode(jsPlumb.CANVAS);
+	// 
+	// });
+	
+	
+	</script>
 	
 	<!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
 	<script>
