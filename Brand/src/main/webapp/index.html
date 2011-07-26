@@ -41,8 +41,17 @@
 	<div id="page">
 		
 	<div id="deck">
-		
+		<div class="hover panel">
+			<div class="front">
+				front
+			</div>
+			<div class="back">
+				back
+			</div>			
+		</div>
 	</div>
+
+	
 	
 	<!-- <div id="demo">
 				<div class="window" id="window1">window one</div>
@@ -113,29 +122,56 @@
 	
 	<script>
 	$(function(){
+		
+		$('.hover').live('click', function(){
+						$(this).toggleClass('flip');
+					});
+					
+					
 		$('#deck').isotope({
 				animationOptions: {
 				    duration: 250,
 				    easing: 'linear',
-				    queue: false,
-					itemPositionDataEnabled: true
-				}
+				    queue: false
+				},
+				itemPositionDataEnabled: true
 		});
 				
 		$('.gsc-result').live('click', function(event){
 			if (event.target.nodeName == "A") return;
-
-			$article = $('<article></article>');
-			$title = $('<h1></h1>')
+			
+			var $article = $('<article class="front"></article>');
+			var $title = $('<h1></h1>')
 				.text($(this).find('.gs-title').text());
-			$body = $('<p></p>')
+			var $body = $('<div class="back"></div>')
 				.text($(this).find('.gs-snippet').text());
 			
-			$article.append($title).append($body);
+			$article.append($title);
 			
-			$element = $('<div></div>')
+			var $element = $('<div class="hover panel"></div>')
 				.append($article);
-			$('#deck').isotope('insert', $element);
+
+			$element.append($body);
+			
+			var $deck = $('#deck');
+			$deck.isotope('insert', $element);
+			
+			var ipos = $element.data('isotope-item-position');
+			var dpos = $deck.offset();
+			
+			var $mask = $('<div></div>').css({
+				position: 	'absolute',
+				width: 	 	'210px',
+				height:	 	'210px',
+				left: 		ipos.x + dpos.left, 
+				top: 		ipos.y + dpos.top
+			});
+			
+			$('body').append($mask);
+			
+			$(this).effect('transfer', { to: $mask, className: "ui-effects-transfer" }, 500, function() {
+				$mask.remove();
+			});
 		});			
 
 		
