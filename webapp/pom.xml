@@ -165,6 +165,9 @@
     </pluginRepositories>
     <build>
         <finalName>plexper</finalName>
+        <filters>
+            <filter>src/main/filters/filter.properties</filter>
+        </filters>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -172,7 +175,6 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
-                    <include>**/*.html</include>
                 </includes>
             </resource>
         </resources>
@@ -203,7 +205,7 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <version>1.6</version>
@@ -218,10 +220,30 @@
                     <prefix>git</prefix>
                     <dateFormat>dd.MM.yyyy '@' HH:mm:ss z</dateFormat>
                     <verbose>true</verbose>
-<!--                    <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory> -->
-                    <dotGitDirectory>/Users/laurian/Dropbox/Projects/NAMEBOUND/PLEXPER/.git</dotGitDirectory> 
+                    <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory> 
+                </configuration>
+            </plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.1.1</version>
+                <executions>
+                    <execution>
+                        <id>Version Calculation</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${project.basedir}/scripts/version.sh</executable>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>hostname</executable>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 </project>
