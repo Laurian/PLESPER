@@ -24,6 +24,7 @@
 	<!-- CSS: implied media="all" -->
 	<link rel="stylesheet" href="style/style.css">
 	<link rel="stylesheet" href="style/smoothness/jquery-ui-1.8.14.custom.css">	
+	<link href="style/jquery.terminal.css" rel="stylesheet"/>
 
 	<!-- More ideas for your <head> here: h5bp.com/docs/#head-Tips -->
 
@@ -34,6 +35,7 @@
 	<script src="script/libs/respond.min.js"></script>
 </head>
 <body>
+	<div id="tilda"></div>
 	<header>
 		<h1>PLEXPER</h1>
 	</header>	
@@ -116,6 +118,9 @@
 	<script src="script/libs/jquery-ui-1.8.14.custom.js"></script>
 	<script src="script/libs/jquery.jsPlumb-1.3.1-all.js"></script>
 	
+	<script src="script/libs/jquery.terminal-0.3.4.js"></script>
+    
+	
 	<script src="script/plugins.js"></script>
 	<script src="script/script.js"></script>
 	<!-- end scripts-->
@@ -174,6 +179,53 @@
 			});
 		});			
 
+
+		// $('#tilda').terminal("/rpc", {
+		// 			login: false,
+		// 			greetings: "You are authenticated"}
+		// 		);
+		
+		//tilda
+		$.fn.tilda = function(eval, options) {
+		        if ($('body').data('tilda')) {
+		            return $('body').data('tilda').terminal;
+		        }
+		        this.addClass('tilda');
+		        options = options || {};
+		        eval = eval || function(command, term) {
+		            term.echo("you don't set eval for tilda");
+		        };
+		        var settings = {
+		            prompt: '>',
+		            name: 'tilda',
+		            //height: 100,
+		            enabled: false,
+		            greetings: 'Quake like console'
+		        };
+		        if (options) {
+		            $.extend(settings, options);
+		        }
+		        this.append('<div class="td"></div>');
+		        var self = this;
+		        self.terminal = this.find('.td').terminal(eval, settings);
+		        var focus = false;
+		        $(document.documentElement).keypress(function(e) {
+		            if (e.charCode == 96) {
+		                self.slideToggle('fast');
+		                self.terminal.set_command('');
+		                self.terminal.focus(focus = !focus);
+		            }
+		        });
+		        $('body').data('tilda', this);
+		        this.hide();
+		        return self;
+		    };
+		//tilda
+		$('#tilda').tilda(
+			function(command, terminal) {
+				terminal.echo('you type command "' + command + '"');
+			}
+		);
 		
 	});
 	

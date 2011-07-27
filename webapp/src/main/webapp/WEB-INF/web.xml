@@ -41,7 +41,7 @@
         <!-- Servlet 3.0 Async Support -->
         <async-supported>true</async-supported>
     </servlet>
-    
+        
     <servlet-mapping>
         <servlet-name>AtmosphereServlet</servlet-name>
         <url-pattern>/api/*</url-pattern>
