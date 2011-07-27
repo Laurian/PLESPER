@@ -88,7 +88,7 @@
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
     
-    <filter-mapping>
+<!--    <filter-mapping>
         <filter-name>CachingFilter</filter-name>
         <url-pattern>*.js</url-pattern>
         <url-pattern>*.css</url-pattern>
@@ -97,11 +97,18 @@
         <url-pattern>*.jpg</url-pattern>
         <url-pattern>*.gif</url-pattern>
         <url-pattern>*.dict</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
 
     <filter-mapping>
         <filter-name>compressionFilter</filter-name>
         <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    
+    <filter-mapping>
+        <filter-name>yuiMinFilter</filter-name>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.json</url-pattern>
+        <url-pattern>*.css</url-pattern>
     </filter-mapping>
     
     <welcome-file-list>

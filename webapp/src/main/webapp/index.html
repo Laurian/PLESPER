@@ -1,18 +1,15 @@
 <!doctype html>
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-
-	<!-- Use the .htaccess and remove these lines to avoid edge case issues.
-	More info: h5bp.com/b/378 -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
 	<title>PLEXPER</title>
-	<meta name="description" content="">
+
+        <meta name="description" content="">
 	<meta name="author" content="">
 
 	<!-- Mobile viewport optimized: j.mp/bplateviewport -->
@@ -21,18 +18,9 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: 	
 	mathiasbynens.be/notes/touch-icons -->
 
-	<!-- CSS: implied media="all" -->
-	<link rel="stylesheet" href="style/style.css">
-	<link rel="stylesheet" href="style/smoothness/jquery-ui-1.8.14.custom.css">	
-	<link href="style/jquery.terminal.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="123,style/style,jquery.terminal,smoothness/jquery-ui-1.8.14.custom.css">
 
-	<!-- More ideas for your <head> here: h5bp.com/docs/#head-Tips -->
-
-	<!-- All JavaScript at the bottom, except for Modernizr and Respond.
-	Modernizr enables HTML5 elements & feature detects; Respond is a polyfill for min/max-width CSS3 Media Queries
-	For optimal performance, use a custom Modernizr build: www.modernizr.com/download/ -->
-	<script src="script/libs/modernizr-2.0.min.js"></script>
-	<script src="script/libs/respond.min.js"></script>
+	<script src="script/lib/modernizr-2.0.min,respond.min.js"></script>
 </head>
 <body>
 	<div id="tilda"></div>
@@ -91,8 +79,8 @@
 	<div>
 		
 		<div id="cse" style="width: 100%;">Loading</div>
-		<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-		<script type="text/javascript"> 
+		<script src="http://www.google.com/jsapi"></script>
+		<script> 
 		  google.load('search', '1', {language : 'en'});
 		  google.setOnLoadCallback(function() {
 		    var customSearchControl = new google.search.CustomSearchControl('013519187268247392580:xfaeneoqdwu');
@@ -102,194 +90,18 @@
 		    customSearchControl.draw('cse', options);
 		  }, true);
 		</script>
-		<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
+		<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css">
 		<link rel="stylesheet" href="style/google.css">
 		 
 	</div>
+        
 	</div>
 
-	<!-- JavaScript at the bottom for fast page loading -->
-	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="script/libs/jquery-1.6.2.min.js"><\/script>')</script>
-
-	<!-- scripts concatenated and minified via ant build script-->
-	<script src="script/libs/jquery.isotope.js"></script>
-	<script src="script/libs/jquery-ui-1.8.14.custom.js"></script>
-	<script src="script/libs/jquery.jsPlumb-1.3.1-all.js"></script>
-	
-	<script src="script/libs/jquery.terminal-0.3.4.js"></script>
-    
-	
-	<script src="script/plugins.js"></script>
-	<script src="script/script.js"></script>
-	<!-- end scripts-->
+	<script src="script/lib/jquery-1.6.2.min,jquery.isotope,jquery-ui-1.8.14.custom,jquery.jsPlumb-1.3.1-all,jquery.terminal-0.3.4.js"></script>
+	<script src="script/plugins,script.js"></script>
 	
 	<script>
-	$(function(){
-		
-		$('.hover').live('click', function(){
-						$(this).toggleClass('flip');
-					});
-					
-					
-		$('#deck').isotope({
-				animationOptions: {
-				    duration: 250,
-				    easing: 'linear',
-				    queue: false
-				},
-				itemPositionDataEnabled: true
-		});
-				
-		$('.gsc-result').live('click', function(event){
-			if (event.target.nodeName == "A") return;
-			
-			var $article = $('<article class="front"></article>');
-			var $title = $('<h1></h1>')
-				.text($(this).find('.gs-title').text());
-			var $body = $('<div class="back"></div>')
-				.text($(this).find('.gs-snippet').text());
-			
-			$article.append($title);
-			
-			var $element = $('<div class="hover panel"></div>')
-				.append($article);
-
-			$element.append($body);
-			
-			var $deck = $('#deck');
-			$deck.isotope('insert', $element);
-			
-			var ipos = $element.data('isotope-item-position');
-			var dpos = $deck.offset();
-			
-			var $mask = $('<div></div>').css({
-				position: 	'absolute',
-				width: 	 	'210px',
-				height:	 	'210px',
-				left: 		ipos.x + dpos.left, 
-				top: 		ipos.y + dpos.top
-			});
-			
-			$('body').append($mask);
-			
-			$(this).effect('transfer', { to: $mask, className: "ui-effects-transfer" }, 500, function() {
-				$mask.remove();
-			});
-		});			
-
-
-		// $('#tilda').terminal("/rpc", {
-		// 			login: false,
-		// 			greetings: "You are authenticated"}
-		// 		);
-		
-		//tilda
-		$.fn.tilda = function(eval, options) {
-		        if ($('body').data('tilda')) {
-		            return $('body').data('tilda').terminal;
-		        }
-		        this.addClass('tilda');
-		        options = options || {};
-		        eval = eval || function(command, term) {
-		            term.echo("you don't set eval for tilda");
-		        };
-		        var settings = {
-		            prompt: '>',
-		            name: 'tilda',
-		            //height: 100,
-		            enabled: false,
-		            greetings: 'Quake like console'
-		        };
-		        if (options) {
-		            $.extend(settings, options);
-		        }
-		        this.append('<div class="td"></div>');
-		        var self = this;
-		        self.terminal = this.find('.td').terminal(eval, settings);
-		        var focus = false;
-		        $(document.documentElement).keypress(function(e) {
-		            if (e.charCode == 96) {
-		                self.slideToggle('fast');
-		                self.terminal.set_command('');
-		                self.terminal.focus(focus = !focus);
-		            }
-		        });
-		        $('body').data('tilda', this);
-		        this.hide();
-		        return self;
-		    };
-		//tilda
-		$('#tilda').tilda(
-			function(command, terminal) {
-				terminal.echo('you type command "' + command + '"');
-			}
-		);
-		
-	});
-	
-	// ///
-	// ;(function() {
-	// 
-	// 	window.jsPlumbDemo = {
-	// 
-	// 		init : function() {			
-	// 
-	// 			var fillColor = "gray";
-	// 			// notice the 'curviness' argument to this Bezier curve.  the curves on this page are far smoother
-	// 			// than the curves on the first demo, which use the default curviness value.
-	// 			jsPlumb.Defaults.Connector = [ "Bezier", { curviness:50 } ];
-	// 			jsPlumb.Defaults.DragOptions = { cursor: "pointer", zIndex:2000 };
-	// 			jsPlumb.Defaults.PaintStyle = { strokeStyle:"gray", lineWidth:2 };
-	// 			jsPlumb.Defaults.EndpointStyle = { radius:9, fillStyle:"gray" };
-	// 			jsPlumb.Defaults.Anchors =  [ "BottomCenter", "TopCenter" ];
-	// 
-	// 			// declare some common values:
-	// 			var arrowCommon = { foldback:0.7, fillStyle:fillColor, width:14 };
-	// 			// use three-arg spec to create two different arrows with the common values:
-	// 			var overlays = [
-	// 				[ "Arrow", { location:0.7 }, arrowCommon ],
-	// 				[ "Arrow", { location:0.3, direction:-1 }, arrowCommon ]
-	// 			];
-	// 
-	// 			jsPlumb.connect({source:"window3", target:"window6", overlays:overlays});
-	// 			jsPlumb.connect({source:"window1", target:"window2", overlays:overlays});
-	// 			jsPlumb.connect({source:"window1", target:"window3", overlays:overlays});
-	// 			jsPlumb.connect({source:"window2", target:"window4", overlays:overlays});
-	// 			jsPlumb.connect({source:"window2", target:"window5", overlays:overlays});
-	// 		}
-	// 	};
-	// 
-	// })();
-	// 
-	// ///
-	// 
-	// jsPlumb.bind("ready", function() {
-	// 
-	// 	// chrome fix.
-	// 	document.onselectstart = function () { return false; };				
-	// 
-	//     // render mode
-	// 	var resetRenderMode = function(desiredMode) {
-	// 		var newMode = jsPlumb.setRenderMode(desiredMode);
-	// 		$(".rmode").removeClass("selected");
-	// 		$(".rmode[mode='" + newMode + "']").addClass("selected");
-	// 		var disableList = (newMode === jsPlumb.VML) ? ".rmode[mode='canvas'],.rmode[mode='svg']" : ".rmode[mode='vml']"; 
-	// 		$(disableList).attr("disabled", true);				
-	// 		jsPlumbDemo.init();
-	// 	};
-	// 
-	// 	$(".rmode").bind("click", function() {
-	// 		var desiredMode = $(this).attr("mode");
-	// 		if (jsPlumbDemo.reset) jsPlumbDemo.reset();
-	// 		jsPlumb.reset();
-	// 		resetRenderMode(desiredMode);					
-	// 	});
-	// 
-	// 	resetRenderMode(jsPlumb.CANVAS);
-	// 
-	// });
+        // WIP
 	
 	
 	</script>
@@ -302,9 +114,23 @@
 		// s.parentNode.insertBefore(g,s)}(document,'script'));
 	</script>
 
-<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6. chromium.org/developers/how-tos/chrome-frame-getting-started -->
 <!--[if lt IE 7 ]>
-<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+<script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
 </body>
 </html>
+<!-- 
+git.branch=${git.branch}
+git.build.user.name=${git.build.user.name}
+git.build.user.email=${git.build.user.email}
+git.build.time=${git.build.time}
+
+git.commit.id=${git.commit.id}
+git.commit.id.abbrev=${commit.id.abbrev}
+git.commit.user.name=${git.commit.user.name}
+git.commit.user.email=${git.commit.user.email}
+git.commit.message.full=${git.commit.message.full}
+git.commit.message.short=${git.commit.message.short}
+git.commit.time=${git.commit.time}
+-->
