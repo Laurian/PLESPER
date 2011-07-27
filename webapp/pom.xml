@@ -205,7 +205,7 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-<!--            <plugin>
+            <plugin>
                 <groupId>pl.project13.maven</groupId>
                 <artifactId>git-commit-id-plugin</artifactId>
                 <version>1.6</version>
@@ -220,10 +220,10 @@
                     <prefix>git</prefix>
                     <dateFormat>dd.MM.yyyy '@' HH:mm:ss z</dateFormat>
                     <verbose>true</verbose>
-                    <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory> 
+<!--                    <dotGitDirectory>${project.basedir}/../.git</dotGitDirectory> -->
                 </configuration>
-            </plugin>-->
-            <plugin>
+            </plugin>
+<!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.1.1</version>
@@ -242,8 +242,7 @@
                 <configuration>
                     <executable>hostname</executable>
                 </configuration>
-            </plugin>
-
+            </plugin>-->
         </plugins>
     </build>
 </project>

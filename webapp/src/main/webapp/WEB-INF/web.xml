@@ -33,7 +33,7 @@
         <servlet-class>com.googlecode.webutilities.servlets.JSCSSMergeServlet</servlet-class>
         <init-param>
             <param-name>expiresMinutes</param-name>
-            <param-value>43200</param-value> <!-- 30 days -->
+            <param-value>1</param-value> <!-- 43200 = 30 days -->
         </init-param>
     </servlet>
     
