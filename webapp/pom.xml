@@ -222,26 +222,6 @@
                     <verbose>true</verbose>
                 </configuration>
             </plugin>
-<!--            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.1.1</version>
-                <executions>
-                    <execution>
-                        <id>Version Calculation</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
-                        <configuration>
-                            <executable>${project.basedir}/scripts/version.sh</executable>
-                        </configuration>
-                    </execution>
-                </executions>
-                <configuration>
-                    <executable>hostname</executable>
-                </configuration>
-            </plugin>-->
         </plugins>
     </build>
 </project>
