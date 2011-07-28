@@ -1,4 +1,4 @@
-<%@page contentType="text/html;charset=UTF-8" language="java"%><%@taglib uri="http://htmlcompressor.googlecode.com/taglib/compressor" prefix="compress"%><compress:html enabled="true" removeComments="true" compressJavaScript="true" yuiJsDisableOptimizations="true"><!doctype html>
+<%@page contentType="text/html;charset=UTF-8" language="java"%><%@taglib uri="http://htmlcompressor.googlecode.com/taglib/compressor" prefix="compress"%><!-- compress:html enabled="true" removeComments="true" compressJavaScript="true" yuiJsDisableOptimizations="true" --><!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
@@ -122,4 +122,4 @@
 <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
 <![endif]-->
 </body>
-</html></compress:html>
+</html><!-- /compress:html -->

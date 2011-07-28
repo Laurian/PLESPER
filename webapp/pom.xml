@@ -19,6 +19,7 @@
     <properties>
         <jersey-version>1.9-ea01</jersey-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <netbeans.hint.deploy.server>Tomcat70</netbeans.hint.deploy.server>
     </properties>
     
     <dependencies>
@@ -222,7 +223,7 @@
                     <verbose>true</verbose>
                 </configuration>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>org.zeroturnaround</groupId>
                 <artifactId>jrebel-maven-plugin</artifactId>
                 <executions>
@@ -233,19 +234,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-						  <!--
-						    root is 2 directories up from the jar/war modules
-						  -->
-						  <!-- <relativePath>../../</relativePath> -->
-						  <!--
-						    use a custom property for specifing root directory (note the double $)
-						    set the property in JRebel configuration or as -Dmyproject.root=c:/projects/
-						  -->
-						  <!-- <rootPath>$${myproject.root}</rootPath> -->
+                            <relativePath>../</relativePath>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>
