@@ -40,7 +40,7 @@
             <!-- 43200 = 30 days -->
         </init-param>
     </servlet>
-    <filter>
+<!--    <filter>
         <filter-name>CachingFilter</filter-name>
         <filter-class>net.sf.ehcache.constructs.web.filter.SimpleCachingHeadersPageCachingFilter</filter-class>
         <init-param>
@@ -55,7 +55,7 @@
             <param-name>cacheName</param-name>
             <param-value>CachedPage2Cache</param-value>
         </init-param>
-    </filter>
+    </filter>-->
     <filter>
         <filter-name>compressionFilter</filter-name>
         <filter-class>com.googlecode.webutilities.filters.CompressionFilter</filter-class>
