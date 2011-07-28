@@ -232,7 +232,7 @@
                         <goals>
                             <goal>generate</goal>
                         </goals>
-						<configuration>
+                        <configuration>
 						  <!--
 						    root is 2 directories up from the jar/war modules
 						  -->
@@ -242,7 +242,7 @@
 						    set the property in JRebel configuration or as -Dmyproject.root=c:/projects/
 						  -->
 						  <!-- <rootPath>$${myproject.root}</rootPath> -->
-						</configuration>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
