@@ -12,7 +12,7 @@ import javax.servlet.ServletContextListener;
 
 /**
  * Web application lifecycle listener.
- * @author laurian
+ * @author Laurian Gridinoc
  */
 public class Init implements ServletContextListener {
     
@@ -23,7 +23,7 @@ public class Init implements ServletContextListener {
         properties = new Properties();
         
         ClassLoader classLoader = this.getClass().getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("git.properties");
+        InputStream inputStream = classLoader.getResourceAsStream("app.properties");
         ServletContext context = servletContextEvent.getServletContext();
         
         try {
