@@ -223,7 +223,7 @@
                     <verbose>true</verbose>
                 </configuration>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>br.com.ingenieux</groupId>
                 <artifactId>beanstalk-maven-plugin</artifactId>
                 <version>0.2.4-SNAPSHOT</version>
@@ -235,8 +235,8 @@
                     <solutionStack>64bit Amazon Linux running Tomcat 7</solutionStack>
                     <s3Bucket>plexper</s3Bucket>
                 </configuration>
-            </plugin>
-            <plugin>
+            </plugin>-->
+<!--            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>1.0-alpha-1</version>
@@ -253,7 +253,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
 <!--            <plugin>
                 <groupId>org.zeroturnaround</groupId>
                 <artifactId>jrebel-maven-plugin</artifactId>
