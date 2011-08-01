@@ -1,5 +1,5 @@
 
-package com.plexper.test;
+package com.plesper.test;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

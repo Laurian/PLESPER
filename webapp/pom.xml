@@ -3,18 +3,18 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>PLEXPER</artifactId>
-        <groupId>com.plexper</groupId>
+        <artifactId>PLESPER</artifactId>
+        <groupId>com.plesper</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     
-    <groupId>com.plexper</groupId>
+    <groupId>com.plesper</groupId>
     <artifactId>webapp</artifactId>
     <version>1.0-SNAPSHOT</version>
     
     <packaging>war</packaging>
     
-    <name>PLEXPER WebApp</name>
+    <name>PLESPER WebApp</name>
     
     <properties>
         <jersey-version>1.9-ea01</jersey-version>
@@ -165,7 +165,7 @@
         </pluginRepository>
     </pluginRepositories>
     <build>
-        <finalName>plexper</finalName>
+        <finalName>plesper</finalName>
         <filters>
             <filter>src/main/filters/filter.properties</filter>
         </filters>
@@ -228,10 +228,10 @@
                 <artifactId>beanstalk-maven-plugin</artifactId>
                 <version>0.2.4-SNAPSHOT</version>
                 <configuration>
-                    <applicationName>plexper</applicationName>
-                    <environmentName>plexper</environmentName>
+                    <applicationName>plesper</applicationName>
+                    <environmentName>plesper</environmentName>
                     <solutionStack>64bit Amazon Linux running Tomcat 7</solutionStack>
-                    <s3Bucket>plexper</s3Bucket>
+                    <s3Bucket>plesper</s3Bucket>
                 </configuration>
             </plugin>
         </plugins>

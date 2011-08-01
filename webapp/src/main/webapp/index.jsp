@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>PLEXPER (<%=id%>)</title>
+	<title>PLESPER (<%=id%>)</title>
 
         <meta name="description" content="">
 	<meta name="author" content="">
@@ -28,7 +28,7 @@
 <body>
 	<div id="tilda"></div>
 	<header>
-            <h1>PLEXPER</h1>
+            <h1>PLESPER</h1>
 	</header>	
 	
 	<div id="page">
