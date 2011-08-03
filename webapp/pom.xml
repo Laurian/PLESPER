@@ -19,7 +19,7 @@
     <properties>
         <jersey-version>1.9-ea01</jersey-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <netbeans.hint.deploy.server>Tomcat70</netbeans.hint.deploy.server>
+<!--        <netbeans.hint.deploy.server>Tomcat70</netbeans.hint.deploy.server>-->
     </properties>
     
     <dependencies>
@@ -223,7 +223,7 @@
                     <verbose>true</verbose>
                 </configuration>
             </plugin>
-            <plugin>
+<!--            <plugin>
                 <groupId>br.com.ingenieux</groupId>
                 <artifactId>beanstalk-maven-plugin</artifactId>
                 <version>0.2.4-SNAPSHOT</version>
@@ -233,7 +233,7 @@
                     <solutionStack>64bit Amazon Linux running Tomcat 7</solutionStack>
                     <s3Bucket>plesper</s3Bucket>
                 </configuration>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 </project>
