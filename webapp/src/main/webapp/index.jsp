@@ -22,6 +22,22 @@
 	mathiasbynens.be/notes/touch-icons -->
 
 	<link rel="stylesheet" href="<%=id%>,style/style,jquery.terminal,smoothness/jquery-ui-1.8.14.custom.css">
+        <style>
+            /*.panel {
+                border: 1px dotted yellow !important;
+            }*/
+            .ui-state-highlight2 {
+                border: 1px dotted blueviolet !important;
+            }
+            .ui-state-highlight3 {
+                border: 1px dotted red !important;
+                background-color: red !important;
+                opacity:    1 !important;
+            }
+            #deck canvas {
+                z-index: 1000;
+            }
+        </style>
 
 	<script src="<%=id%>,script/lib/modernizr-2.0.min,respond.min.js"></script>
 </head>
@@ -34,12 +50,20 @@
 	<div id="page">
 		
 	<div id="deck">
-		<div class="hover panel">
+		<div class="hover panel" id="p1">
 			<div class="front">
-				front
+				front 1
 			</div>
 			<div class="back">
-				back
+				back 1
+			</div>			
+		</div>
+		<div class="hover panel" id="p2">
+			<div class="front">
+				front 2
+			</div>
+			<div class="back">
+				back 2
 			</div>			
 		</div>
 	</div>
@@ -100,7 +124,8 @@
         
 	</div>
 
-	<script src="<%=id%>,script/lib/jquery-1.6.2.min,jquery.isotope,jquery-ui-1.8.14.custom,jquery.jsPlumb-1.3.1-all,jquery.terminal-0.3.4.js"></script>
+	<script src="<%=id%>,script/lib/jquery-1.6.2.min,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4.js"></script>
+        <script src="script/lib/jquery.jsplumb-1.3.1.js"></script>
 	<script src="<%=id%>,script/plugins,script.js"></script>
 	
 	<script>
