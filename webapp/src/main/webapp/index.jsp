@@ -3,14 +3,11 @@
 <!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<% 
-    String id = application.getAttribute("git.commit.id.abbrev").toString();
-%>
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	
-	<title>PLESPER (<%=id%>)</title>
+	<title>PLESPER (${it.properties["git.commit.id.abbrev"]})</title>
 
         <meta name="description" content="">
 	<meta name="author" content="">
@@ -21,12 +18,12 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory: 	
 	mathiasbynens.be/notes/touch-icons -->
 
-	<link rel="stylesheet" href="<%=id%>,style/style,jquery.terminal,smoothness/jquery-ui-1.8.14.custom.css">
+	<link rel="stylesheet" href="${it.properties["git.commit.id.abbrev"]},style/style,jquery.terminal,smoothness/jquery-ui-1.8.14.custom.css">
         <style>
 
         </style>
 
-	<script src="<%=id%>,script/lib/modernizr-2.0.min,respond.min.js"></script>
+	<script src="${it.properties["git.commit.id.abbrev"]},script/lib/modernizr-2.0.min,respond.min.js"></script>
 </head>
 <body>
 	<div id="tilda"></div>
@@ -63,11 +60,11 @@
         
 	</div>
         
-        <footer><a href="https://github.com/Laurian/PLESPER/commit/<%=id%>">version <%=id%></a></footer>
+        <footer><a href="https://github.com/Laurian/PLESPER/commit/${it.properties["git.commit.id.abbrev"]}">version ${it.properties["git.commit.id.abbrev"]}</a></footer>
         <a href="https://github.com/Laurian/PLESPER"><img style="z-index: 1025; position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>
 
-	<script src="<%=id%>,script/lib/jquery-1.6.2.min,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4.js"></script>
-	<script src="<%=id%>,script/plugins,script.js"></script>
+	<script src="${it.properties["git.commit.id.abbrev"]},script/lib/jquery-1.6.2.min,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4.js"></script>
+	<script src="${it.properties["git.commit.id.abbrev"]},script/plugins,script.js"></script>
 	
 	
         <script src="http://www.google.com/jsapi"></script>
@@ -104,7 +101,7 @@ hookSearch();
 }, true);
         </script>
         <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css">
-        <link rel="stylesheet" href="<%=id%>,style/google.css">
+        <link rel="stylesheet" href="${it.properties["git.commit.id.abbrev"]},style/google.css">
 
 <!--[if lt IE 7 ]>
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

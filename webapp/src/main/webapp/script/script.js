@@ -207,6 +207,10 @@ function add(url, title, body, $transfer) {
     }, function(data) {
         console.log(data);
         
+        if (data.cresponse != null) {
+            resolveReferences(data.cresponse);
+            console.log(createHierarchy(data.cresponse));
+        }
         
         if (data.response != null) {
             $title.html(data.response.title);
@@ -344,4 +348,37 @@ function hookSearch() {
         }
     });
 
+}
+
+
+// OpenCalais
+// http://www.opencalais.com/documentation/calais-web-service-api/interpreting-api-response/opencalais-json-output-format
+
+function resolveReferences(flatdb) {
+      for (var element in flatdb)
+            for (var attribute in flatdb[element]) {
+                  var val = flatdb[element][attribute];
+                  if (typeof val == 'string')
+                        if (flatdb[val] != null)
+                              flatdb[element][attribute] = flatdb[val];
+            }
+}
+function createHierarchy(flatdb) {
+      var hdb = new Object();
+      for (var element in flatdb) {
+            var elementType = flatdb[element]._type;
+            var elementGroup = flatdb[element]._typeGroup;
+            if (elementGroup != null) {
+                  if (hdb[elementGroup] == null)
+                        hdb[elementGroup] = new Object();
+                  if (elementType != null) {
+                        if (hdb[elementGroup][elementType] == null)
+                              hdb[elementGroup][elementType] = new Object();
+                        hdb[elementGroup][elementType][element] = flatdb[element];
+                  } else
+                        hdb[elementGroup][element] = flatdb[element];
+            } else
+                  hdb[element] = flatdb[element];
+      }
+      return hdb;
 }

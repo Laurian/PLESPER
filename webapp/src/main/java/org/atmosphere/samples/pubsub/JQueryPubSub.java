@@ -55,7 +55,7 @@ import test.Bcast;
  *
  * @author Jeanfrancois Arcand
  */
-@Path("/pubsub/{topic}")
+@Path("/api/pubsub/{topic}")
 @Produces("text/html;charset=UTF-8")
 public class JQueryPubSub {
 

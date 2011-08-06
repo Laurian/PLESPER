@@ -22,6 +22,7 @@ import ac.simons.oembed.Oembed;
 import ac.simons.oembed.OembedException;
 import ac.simons.oembed.OembedResponse;
 import java.net.URL;
+import java.util.HashMap;
 import mx.bigdata.jcalais.CalaisClient;
 import mx.bigdata.jcalais.CalaisConfig;
 import mx.bigdata.jcalais.CalaisObject;
@@ -34,7 +35,7 @@ import org.atmosphere.samples.pubsub.JQueryPubSub;
  *
  * @author Laurian Gridinoc
  */
-@Path("/article")
+@Path("/api/article")
 @XmlRootElement
 public class Extractor {
 
@@ -59,6 +60,8 @@ public class Extractor {
     public String title, text, image, domain, link, shortLink;
     //public ArrayList<String> images = new ArrayList<String>();
     public OembedResponse response;
+    //public CalaisResponse cresponse;
+    public HashMap calais;
 
     @Path("/info")
     @GET
@@ -79,7 +82,7 @@ public class Extractor {
             image = a.getTopImage().getImageSrc();
         }
 
-        //enrich(url, text);
+        enrich(url, text);
         
         return this;
     }
@@ -118,51 +121,54 @@ public class Extractor {
     }
 
     private void enrich(String url, String content) {
-        CalaisResponse response = null;
+        CalaisResponse cresponse = null;
+        CalaisClient client = new CalaisRestClient("pyns63uge4wqjvg5knus4beu");
         
         try {
-            CalaisClient client = new CalaisRestClient("pyns63uge4wqjvg5knus4beu");
+            
 
             System.out.println("----------------------------------------------");
             System.out.println("contentURL " + url);
             System.out.println("contentURL " + content.length());
-            response = client.analyze(new URL(url));
+            cresponse = client.analyze(new URL(url));
         } catch (Exception ex) {
             Logger.getLogger(Extractor.class.getName()).log(Level.SEVERE, null, ex);
             try {
-                CalaisClient client = new CalaisRestClient("pyns63uge4wqjvg5knus4beu");
-                
                 if (content.length() > 90000) content = content.substring(0, 90000);
                 
                 System.out.println("----------------------------------------------");
                 System.out.println("----------------------------------------------");
                 System.out.println("content " + content.length());
-                response = client.analyze(content);
+                cresponse = client.analyze(content);
             } catch (Exception ex1) {
                 Logger.getLogger(Extractor.class.getName()).log(Level.SEVERE, null, ex1);
             }
         }
-        
-        if (response == null) return;
+        if (cresponse == null) return;
         
         System.out.println("----------------------------------------------");
         System.out.println("getEntities");
-        for (CalaisObject entity : response.getEntities()) {
+        
+//        HashMap entities = new HashMap();
+//        calais.put("Entities", entities);
+        
+        for (CalaisObject entity : cresponse.getEntities()) {
             System.out.println(entity.getField("_type") + ":"
                     + entity.getField("name"));
+//            entities.put()
         }
 
         System.out.println("getTopics");
-        for (CalaisObject topic : response.getTopics()) {
+        for (CalaisObject topic : cresponse.getTopics()) {
             System.out.println(topic.getField("categoryName"));
         }
 
         System.out.println("getSocialTags");
-        for (CalaisObject tags : response.getSocialTags()) {
+        for (CalaisObject tags : cresponse.getSocialTags()) {
             System.out.println(tags.getField("_typeGroup") + ":"
                     + tags.getField("name"));
         }
         
-        JQueryPubSub.test.bcast("OPEN CALAIS!");
+        //JQueryPubSub.test.bcast("OPEN CALAIS!");
     }
 }

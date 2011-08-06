@@ -2,10 +2,6 @@
 <!-- This web.xml file is not required when using Servlet 3.0 container, 
      see implementation details http://jersey.java.net/nonav/documentation/latest/jax-rs.html#d4e194 -->
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-    <listener>
-        <description>ServletContextListener</description>
-        <listener-class>com.plesper.Init</listener-class>
-    </listener>
     <servlet>
         <servlet-name>default</servlet-name>
         <servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>
@@ -14,10 +10,6 @@
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
         <servlet-class>org.atmosphere.cpr.AtmosphereServlet</servlet-class>
-        <!-- init-param>
-            <param-name>grizzly.application.path</param-name>
-            <param-value>/pubsub/chat</param-value>
-        </init-param -->
         <init-param>
             <param-name>org.atmosphere.useWebSocket</param-name>
             <param-value>true</param-value>
@@ -31,7 +23,6 @@
             <param-value>org.atmosphere.client.FormParamFilter,org.atmosphere.client.JavascriptClientFilter</param-value>
         </init-param>
         <load-on-startup>0</load-on-startup>
-        <!-- Servlet 3.0 Async Support -->
         <async-supported>true</async-supported>
     </servlet>
     <servlet>
@@ -65,7 +56,6 @@
         <init-param>
             <param-name>compressionThreshold</param-name>
             <param-value>512</param-value>
-            <!--  anything above 512bytes  -->
         </init-param>
         <init-param>
             <param-name>ignoreURLPattern</param-name>
