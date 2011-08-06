@@ -76,6 +76,12 @@
         </dependency>
         
         <dependency>
+            <groupId>mx.bigdata.jcalais</groupId>
+            <artifactId>j-calais</artifactId>
+            <version>0.3</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.googlecode.webutilities</groupId>
             <artifactId>webutilities</artifactId>
             <version>0.0.4</version>

@@ -45,7 +45,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.PathSegment;
 import java.io.InputStream;
 
-@Path("/")
+@Path("/foo")
 @Produces("text/html")
 public class FileResource {
 

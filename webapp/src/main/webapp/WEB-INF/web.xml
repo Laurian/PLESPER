@@ -6,7 +6,10 @@
         <description>ServletContextListener</description>
         <listener-class>com.plesper.Init</listener-class>
     </listener>
-    
+    <servlet>
+        <servlet-name>default</servlet-name>
+        <servlet-class>org.eclipse.jetty.servlet.DefaultServlet</servlet-class>
+    </servlet>
     <servlet>
         <description>AtmosphereServlet</description>
         <servlet-name>AtmosphereServlet</servlet-name>
@@ -81,11 +84,19 @@
         <url-pattern>*.png</url-pattern>
         <url-pattern>*.jpg</url-pattern>
         <url-pattern>*.gif</url-pattern>
+        <url-pattern>*.ico</url-pattern>
         <url-pattern>*.dict</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.txt</url-pattern>
+        <url-pattern>*.xml</url-pattern>
+        <url-pattern>*.svg</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>AtmosphereServlet</servlet-name>
-        <url-pattern>/api/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <!--    <filter-mapping>
         <filter-name>CachingFilter</filter-name>
