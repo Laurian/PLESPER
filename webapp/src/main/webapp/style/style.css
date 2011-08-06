@@ -488,17 +488,23 @@ body > header h1 {
   font-weight: normal;
   color: #ebebeb;
 }
+/* line 37, ../WEB-INF/sass/style.scss */
+body > footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+}
 
-/* line 39, ../WEB-INF/sass/style.scss */
+/* line 44, ../WEB-INF/sass/style.scss */
 #page {
   padding-top: 62px;
 }
 
-/* line 43, ../WEB-INF/sass/style.scss */
+/* line 48, ../WEB-INF/sass/style.scss */
 #deck {
   margin: 16px 16px 0 16px;
 }
-/* line 46, ../WEB-INF/sass/style.scss */
+/* line 51, ../WEB-INF/sass/style.scss */
 #deck > div {
   width: 210px;
   height: 210px;
@@ -506,17 +512,17 @@ body > header h1 {
   float: left;
   position: relative;
 }
-/* line 64, ../WEB-INF/sass/style.scss */
+/* line 69, ../WEB-INF/sass/style.scss */
 #deck > div > * {
   position: absolute;
   margin: 0;
 }
-/* line 69, ../WEB-INF/sass/style.scss */
+/* line 74, ../WEB-INF/sass/style.scss */
 #deck > div article {
   padding: 5px;
   width: 100%;
 }
-/* line 72, ../WEB-INF/sass/style.scss */
+/* line 77, ../WEB-INF/sass/style.scss */
 #deck > div article h1 {
   margin: 0;
   padding: 0;
@@ -525,12 +531,12 @@ body > header h1 {
   font-family: Georgia, 'Times New Roman', serif;
 }
 
-/* line 85, ../WEB-INF/sass/style.scss */
+/* line 90, ../WEB-INF/sass/style.scss */
 .panel {
   -webkit-perspective: 600;
 }
 
-/* line 89, ../WEB-INF/sass/style.scss */
+/* line 94, ../WEB-INF/sass/style.scss */
 .panel .front {
   float: none;
   position: absolute;
@@ -554,7 +560,7 @@ body > header h1 {
   -webkit-transition: all .4s ease-in-out;
 }
 
-/* line 114, ../WEB-INF/sass/style.scss */
+/* line 119, ../WEB-INF/sass/style.scss */
 .panel.flip .front {
   z-index: 900;
   border-color: #eee;
@@ -564,7 +570,7 @@ body > header h1 {
   -webkit-box-shadow: 0 15px 50px rgba(0,0,0,0.2);*/
 }
 
-/* line 125, ../WEB-INF/sass/style.scss */
+/* line 130, ../WEB-INF/sass/style.scss */
 .panel .back {
   float: none;
   position: absolute;
@@ -585,7 +591,7 @@ body > header h1 {
   -webkit-transition: all .4s ease-in-out;
 }
 
-/* line 147, ../WEB-INF/sass/style.scss */
+/* line 152, ../WEB-INF/sass/style.scss */
 .panel.flip .back {
   z-index: 1000;
   -webkit-transform: rotateY(0deg);
@@ -594,9 +600,29 @@ body > header h1 {
   -webkit-box-shadow: 0 15px 50px rgba(0,0,0,0.2);*/
 }
 
-/* line 157, ../WEB-INF/sass/style.scss */
+/* line 162, ../WEB-INF/sass/style.scss */
 .ui-effects-transfer {
   border: 2px dotted #268bd2;
+}
+
+/*.panel {
+    border: 1px dotted yellow !important;
+}*/
+/* line 167, ../WEB-INF/sass/style.scss */
+.ui-state-highlight2 {
+  border: 1px dotted blueviolet !important;
+}
+
+/* line 170, ../WEB-INF/sass/style.scss */
+.ui-state-highlight3 {
+  border: 1px dotted red !important;
+  background-color: red !important;
+  opacity: 1 !important;
+}
+
+/* line 175, ../WEB-INF/sass/style.scss */
+#deck canvas {
+  z-index: 1000;
 }
 
 /* =============================================================================

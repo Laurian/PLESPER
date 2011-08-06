@@ -34,6 +34,11 @@ body {
 			color:			$mercury;
 		}
 	}
+	>footer {
+		position:	fixed;
+		right:	0;
+		bottom:	0;
+	}
 }
 
 #page {
@@ -155,6 +160,22 @@ body {
 
 
 .ui-effects-transfer { border: 2px dotted $blue; }
+
+/*.panel {
+    border: 1px dotted yellow !important;
+}*/
+.ui-state-highlight2 {
+    border: 1px dotted blueviolet !important;
+}
+.ui-state-highlight3 {
+    border: 1px dotted red !important;
+    background-color: red !important;
+    opacity:    1 !important;
+}
+#deck canvas {
+    z-index: 1000;
+}
+
 
 /////
 

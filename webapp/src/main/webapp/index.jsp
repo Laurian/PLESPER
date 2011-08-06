@@ -23,20 +23,7 @@
 
 	<link rel="stylesheet" href="<%=id%>,style/style,jquery.terminal,smoothness/jquery-ui-1.8.14.custom.css">
         <style>
-            /*.panel {
-                border: 1px dotted yellow !important;
-            }*/
-            .ui-state-highlight2 {
-                border: 1px dotted blueviolet !important;
-            }
-            .ui-state-highlight3 {
-                border: 1px dotted red !important;
-                background-color: red !important;
-                opacity:    1 !important;
-            }
-            #deck canvas {
-                z-index: 1000;
-            }
+
         </style>
 
 	<script src="<%=id%>,script/lib/modernizr-2.0.min,respond.min.js"></script>
@@ -50,7 +37,7 @@
 	<div id="page">
 		
 	<div id="deck">
-		<div class="hover panel" id="p1">
+<!--		<div class="hover panel" id="p1">
 			<div class="front">
 				front 1
 			</div>
@@ -65,82 +52,59 @@
 			<div class="back">
 				back 2
 			</div>			
-		</div>
+		</div>-->
 	</div>
 
 	
 	
-	<!-- <div id="demo">
-				<div class="window" id="window1">window one</div>
-				<div class="window" id="window2">window two</div>
-				<div class="window" id="window3">window three</div>
-				<div class="window" id="window4">window four</div>
-				<div class="window" id="window5">window five</div>
-				<div class="window" id="window6">window six</div>
-			</div>
-			<style>
-			.window { 
-				border:0.1em dotted #d4e06b; 
-				opacity:0.8; 
-				filter:alpha(opacity=80); 
-				width:14em; height:4em; 
-				z-index:20; 
-				position:absolute; 
-				color:black;
-				font-family:helvetica, sans;
-				padding-top:0.9em; 
-				font-size:0.9em;
-				text-align:center;
-				background-color:white;
-			}
-			#window1 { left:20em;}
-			#window2 { left:10em;top:12em;}
-			#window3 { left:40em;top:12em;}
-			#window4 { left:4em;top:24em;}
-			#window5 { left:22em;top:24em;}
-			#window6 { left:47em;top:24em;}
-			#window7 { top:18em;left:40em;}
-			#window8 { left:63em;top:32em;}
-			</style> -->
-	
 	<div>
-		
 		<div id="cse" style="width: 100%;">Loading</div>
-		<script src="http://www.google.com/jsapi"></script>
-		<script> 
-		  google.load('search', '1', {language : 'en'});
-		  google.setOnLoadCallback(function() {
-		    var customSearchControl = new google.search.CustomSearchControl('013519187268247392580:xfaeneoqdwu');
-		    customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
-		    var options = new google.search.DrawOptions();
-		    options.setAutoComplete(true);    
-		    customSearchControl.draw('cse', options);
-		  }, true);
-		</script>
-		<link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css">
-		<link rel="stylesheet" href="<%=id%>,style/google.css">
-		 
 	</div>
         
 	</div>
+        
+        <footer><a href="https://github.com/Laurian/PLESPER/commit/<%=id%>">version <%=id%></a></footer>
+        <a href="https://github.com/Laurian/PLESPER"><img style="z-index: 1025; position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>
 
 	<script src="<%=id%>,script/lib/jquery-1.6.2.min,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4.js"></script>
-        <script src="script/lib/jquery.jsplumb-1.3.1.js"></script>
 	<script src="<%=id%>,script/plugins,script.js"></script>
 	
+	
+        <script src="http://www.google.com/jsapi"></script>
 	<script>
-        // WIP
-	
-	
-	</script>
-	
-	<!-- mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID -->
-	<script>
-		// var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview'],['_trackPageLoadTime']];
-		// (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-		// g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-		// s.parentNode.insertBefore(g,s)}(document,'script'));
-	</script>
+var _gaq=[['_setAccount','UA-2526475-5'],['_trackPageview'],['_trackPageLoadTime']];
+(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+s.parentNode.insertBefore(g,s)}(document,'script'));
+
+google.load('search', '1', {language : 'en'});
+//var _gaq = _gaq || [];
+//_gaq.push(["_setAccount", "UA-2526475-5"]);
+function _trackQuery(control, searcher, query) {
+var gaQueryParamName = "q";
+var loc = document.location;
+var url = [
+  loc.pathname,
+  loc.search,
+  loc.search ? '&' : '?',
+  gaQueryParamName == '' ? 'q' : encodeURIComponent(gaQueryParamName),
+  '=',
+  encodeURIComponent(query)
+].join('');
+_gaq.push(["_trackPageview", url]);
+}
+google.setOnLoadCallback(function() {
+var customSearchControl = new google.search.CustomSearchControl('013519187268247392580:xfaeneoqdwu');
+customSearchControl.setResultSetSize(google.search.Search.LARGE_RESULTSET);
+customSearchControl.setSearchStartingCallback(null, _trackQuery);
+var options = new google.search.DrawOptions();
+options.setAutoComplete(true);    
+customSearchControl.draw('cse', options);
+hookSearch();
+}, true);
+        </script>
+        <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css">
+        <link rel="stylesheet" href="<%=id%>,style/google.css">
 
 <!--[if lt IE 7 ]>
 <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>

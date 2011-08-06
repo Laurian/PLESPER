@@ -57,8 +57,24 @@
             <groupId>com.jimplush</groupId>
             <artifactId>goose</artifactId>
             <version>1.4.1</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jsoup</artifactId>
+                    <groupId>org.jsoup</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>httpclient</artifactId>
+                    <groupId>org.apache.httpcomponents</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
-
+        
+        <dependency>
+            <groupId>eu.michael-simons</groupId>
+            <artifactId>java-oembed</artifactId>
+            <version>0.0.7-SNAPSHOT</version>
+        </dependency>
+        
         <dependency>
             <groupId>com.googlecode.webutilities</groupId>
             <artifactId>webutilities</artifactId>

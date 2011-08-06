@@ -1,6 +1,6 @@
 	$(function(){
             
-                var inc = 0;
+                
 		
 		$('.hover').live('click', function(){
 						$(this).toggleClass('flip');
@@ -21,38 +21,38 @@
                                 transformsEnabled: false
 		});
                 
-                $('#deck').sortable({
-                    handle: '.front',
-                    placeholder: 'ui-state-highlight3',
-                    helper: function(event, element) {
-                        return $(element).clone().css({
-                            '-webkit-transform': 'none'
-                        });
-                    },
-                    start: function() {
-                        $('#deck').isotope('destroy');
-                        //$('.panel').css({'-webkit-perspective': 'none'});
-                    },
-                    stop: function() {
-                        $('#deck').isotope({
-                            itemSelector: '.panel',
-                                masonry : {
-                                    columnWidth : 10
-                                },
-				animationOptions: {
-				    duration: 150,
-				    easing: 'linear',
-				    queue: false
-				},
-				itemPositionDataEnabled: true,
-                                transformsEnabled: false
-                        });
-                        //$('.panel').css({'-webkit-perspective': 600});
-                        
-                        jsPlumb.repaintEverything();
-
-                    }
-                });
+//                $('#deck').sortable({
+//                    handle: '.front',
+//                    placeholder: 'ui-state-highlight3',
+//                    helper: function(event, element) {
+//                        return $(element).clone().css({
+//                            '-webkit-transform': 'none'
+//                        });
+//                    },
+//                    start: function() {
+//                        $('#deck').isotope('destroy');
+//                        //$('.panel').css({'-webkit-perspective': 'none'});
+//                    },
+//                    stop: function() {
+//                        $('#deck').isotope({
+//                            itemSelector: '.panel',
+//                                masonry : {
+//                                    columnWidth : 10
+//                                },
+//				animationOptions: {
+//				    duration: 150,
+//				    easing: 'linear',
+//				    queue: false
+//				},
+//				itemPositionDataEnabled: true,
+//                                transformsEnabled: false
+//                        });
+//                        //$('.panel').css({'-webkit-perspective': 600});
+//                        
+//                        jsPlumb.repaintEverything();
+//
+//                    }
+//                });
                 
 //                $('.panel').resizable({
 //                    helper: 'ui-state-highlight2',
@@ -65,64 +65,11 @@
 		$('.gsc-result').live('click', function(event){
 			if (event.target.nodeName == "A") return;
 			
-			var $article = $('<article class="front"></article>');
-			var $title = $('<h1></h1>')
-				.text($(this).find('.gs-title').text());
-			var $body = $('<div class="back"></div>')
-				.text($(this).find('.gs-snippet').text());
-			
-			$article.append($title);
-			
-                        inc++;
-			var $element = $('<div class="hover panel"></div>')
-				.append($article).attr('id', 'e' + inc);
-
-			$element.append($body);
-			
-			var $deck = $('#deck');
-			$deck.isotope('insert', $element);
-			
-			var ipos = $element.data('isotope-item-position');
-			var dpos = $deck.offset();
-			
-			var $mask = $('<div></div>').css({
-				position: 	'absolute',
-				width: 	 	'210px',
-				height:	 	'210px',
-				left: 		ipos.x + dpos.left, 
-				top: 		ipos.y + dpos.top
-			});
-			
-			$('body').append($mask);
-			
-			$(this).effect('transfer', {to: $mask, className: "ui-effects-transfer"}, 500, function() {
-				$mask.remove();
-                                var endpointOptions = { 
-                                    isSource:true, 
-                                    isTarget:true,
-                                    connectorOverlays: [ 
-                                        //[ "Arrow", { location:0.5 } ] 
-                                        [ "Label", { label:"foo", location:0.25 } ]
-                                    ],
-                                    anchor:[ "TopCenter","RightMiddle","BottomCenter","LeftMiddle" ]
-                                };
-                                var endpoint = jsPlumb.addEndpoint('e' + inc, endpointOptions);
-                                var endpoint2 = jsPlumb.addEndpoint('e' + inc, endpointOptions);
-			});
+                        var url = $(this).find('a.gs-title').attr('href');
+                        var title = $(this).find('.gs-title').text();
+                        var body = $(this).find('.gs-snippet').text();
                         
-                        $article.resizable({
-                            //grid: [10, 10],
-                            animate:    false,
-                            animateDuration: 0,
-                            helper: 'ui-state-highlight2',
-                            stop: function (event, ui) {
-                                $(this).parent()
-                                    .width(ui.size.width)
-                                    .height(ui.size.height);
-                                $('#deck').isotope('reLayout');
-                                jsPlumb.repaintEverything();
-                            }
-                        });
+                        add(url, title, body, $(this));                
 		});			
 
 
@@ -185,24 +132,24 @@
 	 			var fillColor = "gray";
 	 			// notice the 'curviness' argument to this Bezier curve.  the curves on this page are far smoother
 	 			// than the curves on the first demo, which use the default curviness value.
-	 			jsPlumb.Defaults.Connector = [ "Bezier", { curviness:50 } ];
-	 			jsPlumb.Defaults.DragOptions = { cursor: "pointer", zIndex:2000 };
-	 			jsPlumb.Defaults.PaintStyle = { strokeStyle:"gray", lineWidth:2 };
-	 			jsPlumb.Defaults.EndpointStyle = { radius:9, fillStyle:"gray" };
+	 			jsPlumb.Defaults.Connector = [ "Bezier", {curviness:50} ];
+	 			jsPlumb.Defaults.DragOptions = {cursor: "pointer", zIndex:2000};
+	 			jsPlumb.Defaults.PaintStyle = {strokeStyle:"gray", lineWidth:2};
+	 			jsPlumb.Defaults.EndpointStyle = {radius:9, fillStyle:"gray"};
 	 			jsPlumb.Defaults.Anchors =  [ "BottomCenter", "TopCenter" ];
                                 
                                 
                                 jsPlumb.setDraggableByDefault(false);
 	 
 	 			// declare some common values:
-	 			var arrowCommon = { foldback:0.7, fillStyle:fillColor, width:14 };
+	 			var arrowCommon = {foldback:0.7, fillStyle:fillColor, width:14};
 	 			// use three-arg spec to create two different arrows with the common values:
 	 			var overlays = [
-	 				[ "Arrow", { location:0.7 }, arrowCommon ],
-	 				[ "Arrow", { location:0.3, direction:-1 }, arrowCommon ]
+	 				[ "Arrow", {location:0.7}, arrowCommon ],
+	 				[ "Arrow", {location:0.3, direction:-1}, arrowCommon ]
 	 			];
                                 
-                                jsPlumb.connect({source:"p1", target:"p2", overlays:overlays});
+                                //jsPlumb.connect({source:"p1", target:"p2", overlays:overlays});
                                 
 	 
 //	 			jsPlumb.connect({source:"window3", target:"window6", overlays:overlays});
@@ -220,7 +167,7 @@
         jsPlumb.bind("ready", function() {
 	 
 	 	// chrome fix.
-	 	document.onselectstart = function () { return false; };				
+	 	document.onselectstart = function () {return false;};				
 	 
 	     // render mode
 	 	var resetRenderMode = function(desiredMode) {
@@ -242,3 +189,159 @@
 	 	resetRenderMode(jsPlumb.CANVAS);
 	 
 	 });
+         
+var inc = 0;
+function add(url, title, body, $transfer) {
+////
+    var $article = $('<article class="front"></article>');
+    var $title = $('<h1></h1>')
+            .text(title);
+    var $body = $('<div class="back"></div>')
+            .text(body);
+
+    $article.append($title);
+                        
+    
+    $.get('./api/article/info', {
+        url:    url
+    }, function(data) {
+        console.log(data);
+        
+        
+        if (data.response != null) {
+            $title.html(data.response.title);
+            
+            if (data.response.html) {
+                $title.after(data.response.html);
+            } else if (data.response.url && data.response.type == "photo") {
+                $image = $('<img src="' + data.response.url + '">');
+                $image.bind('load', function() {
+                if (this.clientWidth > $image.parent().width())
+                    $image.css({
+                        width: '100%',
+                        'maximum-width': this.clientWidth
+                    });
+                });
+                $title.after($image);
+            }
+            return;
+        }
+        
+        $title.html(data.title)
+            .after(data.text);
+            
+        if (data.image != null) {
+            $image = $('<img src="' + data.image + '">');
+            $image.bind('load', function() {
+                if (this.clientWidth > $image.parent().width())
+                    $image.css({
+                        width: '100%',
+                        'maximum-width': this.clientWidth
+                    });
+            });
+            $body.append($image);
+        }
+//                            for (i = 0; i < data.images.length; i++) {
+//                                $body.append('<img src="' + data.images[i] + '" style="width:64px">')
+//                            }
+    });
+
+
+    inc++;
+    var $element = $('<div class="hover panel"></div>')
+            .append($article).attr('id', 'e' + inc);
+
+    $element.append($body);
+
+    var $deck = $('#deck');
+    $deck.isotope('insert', $element);
+
+    var ipos = $element.data('isotope-item-position');
+    var dpos = $deck.offset();
+
+    var $mask = $('<div></div>').css({
+            position: 	'absolute',
+            width: 	 	'210px',
+            height:	 	'210px',
+            left: 		ipos.x + dpos.left, 
+            top: 		ipos.y + dpos.top
+    });
+
+    $('body').append($mask);
+
+    $transfer.effect('transfer', {to: $mask, className: "ui-effects-transfer"}, 500, function() {
+            $mask.remove();
+            var endpointOptions = { 
+                isSource:true, 
+                isTarget:true,
+                connectorOverlays: [ 
+                    [ "Arrow", {location:0.5} ] 
+                    //[ "Label", { label:"foo", location:0.25 } ]
+                ],
+                anchor:[ "TopCenter","RightMiddle","BottomCenter","LeftMiddle" ]
+            };
+            var endpoint = jsPlumb.addEndpoint('e' + inc, endpointOptions);
+            var endpoint2 = jsPlumb.addEndpoint('e' + inc, endpointOptions);
+    });
+
+    $article.resizable({
+        //grid: [10, 10],
+        animate:    false,
+        animateDuration: 0,
+        helper: 'ui-state-highlight2',
+        stop: function (event, ui) {
+            $(this).parent()
+                .width(ui.size.width)
+                .height(ui.size.height);
+            $('#deck').isotope('reLayout');
+            jsPlumb.repaintEverything();
+        }
+    });
+////                        
+}
+
+// hook URLs in search
+function hookSearch() {
+    var urlregex = new RegExp("^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
+
+    var $search = $('input.gsc-search-button');
+    var $query = $('input.gsc-input');
+    
+    $('form.gsc-search-box').submit(function(event) {
+        if (urlregex.test($.trim($query.val()))) {
+            event.stopImmediatePropagation();
+            var url = $.trim($query.val());
+            add(url, url, '', $query);
+            $('div.gsc-clear-button').trigger('click');
+            //$query.val(url);
+        }
+    });
+
+    
+    $search.click(function(event) {
+        if (urlregex.test($.trim($query.val()))) {
+            event.stopImmediatePropagation();
+            var url = $.trim($query.val());
+            add(url, url, '', $query);
+            $('div.gsc-clear-button').trigger('click');
+            //$query.val(url);
+        }
+    });
+
+    $query.keyup(function(event) {
+        if (urlregex.test($.trim($query.val()))) {
+            if ($search.attr('value') != 'Search') return;
+            $search.attr('value', 'Load URL').stop(true).effect("highlight", {
+                color:  '#268bd2',
+                mode:   'show'
+            }, 3000);
+        } else {
+            if ($search.attr('value') == 'Search') return;
+            $search.attr('value', 'Search').stop(true).effect("highlight", {
+                color:  '#dc322f',
+                mode:   'show'
+            }, 3000);;            
+        }
+    });
+
+}
