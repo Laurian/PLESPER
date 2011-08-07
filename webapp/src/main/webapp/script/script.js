@@ -63,8 +63,7 @@ $(function(){
                     iso();
                 });
                 $('#radio3').click(function() {
-                    alert('p');
-                    plumb();
+                    plumb();        
                 });
 		
 		$('.hover').live('dblclick', function(event){
@@ -377,30 +376,39 @@ function add(url, title, body, $transfer) {
 ////                        
 }
 
+var isoOn = true;
 function iso() {
-//    jsPlumb.setDraggable($('.panel'), false);
-//    $('.panel').css({'-webkit-transform':'scale3d(1, 1, 1);'});
-//    $('.panel').css({'-webkit-perspective': '600'});
-//    
-//    $('#deck').isotope({
-//                                itemSelector: '.panel',
-//                                masonry : {
-//                                    columnWidth : 10
-//                                },
-//				animationOptions: {
-//				    duration: 150,
-//				    easing: 'linear',
-//				    queue: false
-//				},
-//				itemPositionDataEnabled: true,
-//                                transformsEnabled: false
-//		});
+    if (isoOn) return;
+    isoOn = true;
+    jsPlumb.setDraggable($('.panel'), false);
+    $('.panel').css({'-webkit-transform':'scale3d(1, 1, 1);'});
+    $('.panel').css({'-webkit-perspective': 'none'});
+    $('.panel').removeClass('ui-state-disabled');
+    //$('.panel').find('canvas').css({'pointer-events': 'none'});
+    
+    $('#deck').isotope({
+                                itemSelector: '.panel',
+                                masonry : {
+                                    columnWidth : 10
+                                },
+				animationOptions: {
+				    duration: 150,
+				    easing: 'linear',
+				    queue: false
+				},
+				itemPositionDataEnabled: true,
+                                transformsEnabled: false
+		});
+    jsPlumb.repaintEverything();
 }
 
 function plumb() {
+    if (!isoOn) return;
+    isoOn = false;
     $('#deck').isotope('destroy');
-    $('.panel').css({'-webkit-transform': 'none !important'});
-    $('.panel').css({'-webkit-perspective': 'none !important'});
+    $('.panel').css({'-webkit-transform': 'none '});
+    $('.panel').css({'-webkit-perspective': 'none '});
+    //$('.panel').find('canvas').css({'pointer-events': 'auto'});
     jsPlumb.setDraggable($('.panel'), true);
     jsPlumb.draggable($('.panel'));
 
