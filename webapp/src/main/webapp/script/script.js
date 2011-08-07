@@ -1,4 +1,4 @@
-	$(function(){
+$(function(){
             
     $(".panel").click(function(evt) {
             $(this).zoomTo({targetsize:0.75, duration:600});
@@ -10,7 +10,7 @@
             $("body").zoomTo({targetsize:1.0, duration:600});
             evt.stopPropagation();
     });
-    //$("body").zoomTo({targetsize:1.0, duration:600});        
+    $("body").zoomTo({targetsize:1.0, duration:600});        
             
     VS.init({
       container : $('.visual_search'),
@@ -20,22 +20,22 @@
         facetMatches : function(callback) {
     callback([
       'account', 'filter', 'access', 'title',
-      { label: 'city',    category: 'location' },
-      { label: 'address', category: 'location' },
-      { label: 'country', category: 'location' },
-      { label: 'state',   category: 'location' },
+      {label: 'city',    category: 'location'},
+      {label: 'address', category: 'location'},
+      {label: 'country', category: 'location'},
+      {label: 'state',   category: 'location'},
     ]);
   },
         valueMatches : function(facet, searchTerm, callback) {
     switch (facet) {
     case 'account':
         callback([
-          { value: '1-amanda', label: 'Amanda' },
-          { value: '2-aron',   label: 'Aron' },
-          { value: '3-eric',   label: 'Eric' },
-          { value: '4-jeremy', label: 'Jeremy' },
-          { value: '5-samuel', label: 'Samuel' },
-          { value: '6-scott',  label: 'Scott' }
+          {value: '1-amanda', label: 'Amanda'},
+          {value: '2-aron',   label: 'Aron'},
+          {value: '3-eric',   label: 'Eric'},
+          {value: '4-jeremy', label: 'Jeremy'},
+          {value: '5-samuel', label: 'Samuel'},
+          {value: '6-scott',  label: 'Scott'}
         ]);
         break;
       case 'filter':
@@ -57,9 +57,18 @@
       }
     });
             
-                $( "#radio" ).buttonset();
+                $("#radio").buttonset();
+                
+                $('#radio0').click(function() {
+                    iso();
+                });
+                $('#radio3').click(function() {
+                    alert('p');
+                    plumb();
+                });
 		
-		$('.hover').live('dblclick', function(){
+		$('.hover').live('dblclick', function(event){
+                        event.stopImmediatePropagation();
 			//$(this).toggleClass('flip');
                         if (! $(this).hasClass('flip')) {
                             $(this).addClass('flip');
@@ -198,20 +207,20 @@
 	 			// than the curves on the first demo, which use the default curviness value.
 	 			jsPlumb.Defaults.Connector = [ "Bezier", {curviness:50} ];
 	 			jsPlumb.Defaults.DragOptions = {cursor: "pointer", zIndex:2000};
-	 			jsPlumb.Defaults.PaintStyle = {strokeStyle:"gray", lineWidth:2};
-	 			jsPlumb.Defaults.EndpointStyle = {radius:9, fillStyle:"gray"};
+	 			jsPlumb.Defaults.PaintStyle = {strokeStyle:"#268bd2", lineWidth:2};
+	 			jsPlumb.Defaults.EndpointStyle = {radius:5, fillStyle:"#268bd2"};
 	 			jsPlumb.Defaults.Anchors =  [ "BottomCenter", "TopCenter" ];
                                 
                                 
                                 jsPlumb.setDraggableByDefault(false);
 	 
 	 			// declare some common values:
-	 			var arrowCommon = {foldback:0.7, fillStyle:fillColor, width:14};
+	 			var arrowCommon = {foldback:0.7, fillStyle:fillColor, width:10};
 	 			// use three-arg spec to create two different arrows with the common values:
-	 			var overlays = [
-	 				[ "Arrow", {location:0.7}, arrowCommon ],
-	 				[ "Arrow", {location:0.3, direction:-1}, arrowCommon ]
-	 			];
+//	 			var overlays = [
+//	 				[ "Arrow", {location:0.7}, arrowCommon ],
+//	 				[ "Arrow", {location:0.3, direction:-1}, arrowCommon ]
+//	 			];
                                 
                                 //jsPlumb.connect({source:"p1", target:"p2", overlays:overlays});
                                 
@@ -227,7 +236,7 @@
 	 })();
 	// 
 	// ///
-	// 
+	// FIXME
         jsPlumb.bind("ready", function() {
 	 
 	 	// chrome fix.
@@ -339,17 +348,17 @@ function add(url, title, body, $transfer) {
 
     $transfer.effect('transfer', {to: $mask, className: "ui-effects-transfer"}, 500, function() {
             $mask.remove();
-            var endpointOptions = { 
-                isSource:true, 
-                isTarget:true,
-                connectorOverlays: [ 
-                    [ "Arrow", {location:0.5} ] 
-                    //[ "Label", { label:"foo", location:0.25 } ]
-                ],
-                anchor:[ "TopCenter","RightMiddle","BottomCenter","LeftMiddle" ]
-            };
-            var endpoint = jsPlumb.addEndpoint('e' + inc, endpointOptions);
-            var endpoint2 = jsPlumb.addEndpoint('e' + inc, endpointOptions);
+//            var endpointOptions = { 
+//                isSource:true, 
+//                isTarget:true,
+//                connectorOverlays: [ 
+//                    [ "Arrow", {location:0.5} ] 
+//                    //[ "Label", { label:"foo", location:0.25 } ]
+//                ],
+//                anchor:[ "TopCenter","RightMiddle","BottomCenter","LeftMiddle" ]
+//            };
+//            var endpoint = jsPlumb.addEndpoint('e' + inc, endpointOptions);
+//            var endpoint2 = jsPlumb.addEndpoint('e' + inc, endpointOptions);
     });
 
     $article.resizable({
@@ -366,6 +375,50 @@ function add(url, title, body, $transfer) {
         }
     });
 ////                        
+}
+
+function iso() {
+//    jsPlumb.setDraggable($('.panel'), false);
+//    $('.panel').css({'-webkit-transform':'scale3d(1, 1, 1);'});
+//    $('.panel').css({'-webkit-perspective': '600'});
+//    
+//    $('#deck').isotope({
+//                                itemSelector: '.panel',
+//                                masonry : {
+//                                    columnWidth : 10
+//                                },
+//				animationOptions: {
+//				    duration: 150,
+//				    easing: 'linear',
+//				    queue: false
+//				},
+//				itemPositionDataEnabled: true,
+//                                transformsEnabled: false
+//		});
+}
+
+function plumb() {
+    $('#deck').isotope('destroy');
+    $('.panel').css({'-webkit-transform': 'none !important'});
+    $('.panel').css({'-webkit-perspective': 'none !important'});
+    jsPlumb.setDraggable($('.panel'), true);
+    jsPlumb.draggable($('.panel'));
+
+    jsPlumb.repaintEverything();
+    var endpointOptions = { 
+                isSource:true, 
+                isTarget:true,
+                connectorOverlays: [ 
+                    [ "Arrow", {location:0.5} ] 
+                    //[ "Label", { label:"foo", location:0.25 } ]
+                ],
+                anchor:[ "TopCenter","RightMiddle","BottomCenter","LeftMiddle" ]
+            };
+    for (i = 0; i < inc; i++) {
+        if ($('#e' + i).length > 0)
+            jsPlumb.addEndpoint('e' + i, endpointOptions);
+    }
+    jsPlumb.repaintEverything();
 }
 
 // hook URLs in search
@@ -415,35 +468,3 @@ function hookSearch() {
 
 }
 
-
-// OpenCalais
-// http://www.opencalais.com/documentation/calais-web-service-api/interpreting-api-response/opencalais-json-output-format
-
-function resolveReferences(flatdb) {
-      for (var element in flatdb)
-            for (var attribute in flatdb[element]) {
-                  var val = flatdb[element][attribute];
-                  if (typeof val == 'string')
-                        if (flatdb[val] != null)
-                              flatdb[element][attribute] = flatdb[val];
-            }
-}
-function createHierarchy(flatdb) {
-      var hdb = new Object();
-      for (var element in flatdb) {
-            var elementType = flatdb[element]._type;
-            var elementGroup = flatdb[element]._typeGroup;
-            if (elementGroup != null) {
-                  if (hdb[elementGroup] == null)
-                        hdb[elementGroup] = new Object();
-                  if (elementType != null) {
-                        if (hdb[elementGroup][elementType] == null)
-                              hdb[elementGroup][elementType] = new Object();
-                        hdb[elementGroup][elementType][element] = flatdb[element];
-                  } else
-                        hdb[elementGroup][element] = flatdb[element];
-            } else
-                  hdb[element] = flatdb[element];
-      }
-      return hdb;
-}

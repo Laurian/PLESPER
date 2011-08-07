@@ -119,6 +119,10 @@ body {
 html.noScroll {
 	.panel {
 		-webkit-perspective: none !important;
+		-webkit-transform: none !important;
+		-webkit-transform-style: flat !important;
+		-webkit-backface-visibility: visible;
+		-webkit-transition: none !important;
 	}
 	.panel .front {
 		display:	block;
