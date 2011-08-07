@@ -1,5 +1,6 @@
 package com.plesper.content;
 
+import com.sun.syndication.io.FeedException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,8 +22,15 @@ import ac.simons.oembed.DefaultOembedProvider;
 import ac.simons.oembed.Oembed;
 import ac.simons.oembed.OembedException;
 import ac.simons.oembed.OembedResponse;
+import com.sun.syndication.feed.synd.SyndEntry;
+import com.sun.syndication.feed.synd.SyndFeed;
+import com.sun.syndication.io.SyndFeedInput;
+import com.sun.syndication.io.XmlReader;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import mx.bigdata.jcalais.CalaisClient;
 import mx.bigdata.jcalais.CalaisConfig;
 import mx.bigdata.jcalais.CalaisObject;
@@ -62,12 +70,15 @@ public class Extractor {
     public OembedResponse response;
     //public CalaisResponse cresponse;
     public HashMap calais;
+//    //public SyndFeed feed;
 
     @Path("/info")
     @GET
     @Produces("application/json")
     public Extractor getArticleData(@QueryParam("url") String url) {
 
+        feed(url);
+        
         oEmbed(url);
 
         Article a = getArticle(url);
@@ -83,7 +94,7 @@ public class Extractor {
         }
 
         enrich(url, text);
-        
+
         return this;
     }
 
@@ -123,9 +134,9 @@ public class Extractor {
     private void enrich(String url, String content) {
         CalaisResponse cresponse = null;
         CalaisClient client = new CalaisRestClient("pyns63uge4wqjvg5knus4beu");
-        
+
         try {
-            
+
 
             System.out.println("----------------------------------------------");
             System.out.println("contentURL " + url);
@@ -134,8 +145,10 @@ public class Extractor {
         } catch (Exception ex) {
             Logger.getLogger(Extractor.class.getName()).log(Level.SEVERE, null, ex);
             try {
-                if (content.length() > 90000) content = content.substring(0, 90000);
-                
+                if (content.length() > 90000) {
+                    content = content.substring(0, 90000);
+                }
+
                 System.out.println("----------------------------------------------");
                 System.out.println("----------------------------------------------");
                 System.out.println("content " + content.length());
@@ -144,14 +157,16 @@ public class Extractor {
                 Logger.getLogger(Extractor.class.getName()).log(Level.SEVERE, null, ex1);
             }
         }
-        if (cresponse == null) return;
-        
+        if (cresponse == null) {
+            return;
+        }
+
         System.out.println("----------------------------------------------");
         System.out.println("getEntities");
-        
+
 //        HashMap entities = new HashMap();
 //        calais.put("Entities", entities);
-        
+
         for (CalaisObject entity : cresponse.getEntities()) {
             System.out.println(entity.getField("_type") + ":"
                     + entity.getField("name"));
@@ -168,7 +183,30 @@ public class Extractor {
             System.out.println(tags.getField("_typeGroup") + ":"
                     + tags.getField("name"));
         }
-        
+
         //JQueryPubSub.test.bcast("OPEN CALAIS!");
+    }
+
+    private void feed(String url) {
+        try {
+            SyndFeed feed = null;
+            SyndFeedInput input = new SyndFeedInput();
+            feed = input.build(new XmlReader(new URL(url)));
+
+            List<SyndEntry> entries = feed.getEntries();
+            if (entries == null) {
+                entries = new ArrayList<SyndEntry>();
+            }
+            
+            Iterator<SyndEntry> iterator = entries.iterator();
+            
+            System.out.println("FEED?----------------------------------------------");
+            while (iterator.hasNext()) {
+                System.out.println(iterator.next().getTitle());
+            }
+            
+        } catch (Exception ex) {
+            Logger.getLogger(Extractor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

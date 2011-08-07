@@ -1,3 +1,6 @@
+// http://jqueryui.com/themeroller/#ffDefault=Helvetica%2C+Arial%2C+sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=222222&bgTextureHeader=23_fine_grain.png&bgImgOpacityHeader=44&borderColorHeader=333333&fcHeader=ebebeb&iconColorHeader=ebebeb&bgColorContent=222222&bgTextureContent=01_flat.png&bgImgOpacityContent=25&borderColorContent=555555&fcContent=ebebeb&iconColorContent=268bd2&bgColorDefault=222222&bgTextureDefault=04_highlight_hard.png&bgImgOpacityDefault=35&borderColorDefault=444444&fcDefault=e7e7e9&iconColorDefault=cccccc&bgColorHover=222222&bgTextureHover=03_highlight_soft.png&bgImgOpacityHover=33&borderColorHover=268bd2&fcHover=ebebeb&iconColorHover=ebebeb&bgColorActive=222222&bgTextureActive=23_fine_grain.png&bgImgOpacityActive=20&borderColorActive=268bd2&fcActive=ffffff&iconColorActive=268bd2&bgColorHighlight=ebebeb&bgTextureHighlight=11_white_lines.png&bgImgOpacityHighlight=80&borderColorHighlight=268bd2&fcHighlight=268bd2&iconColorHighlight=268bd2&bgColorError=d33682&bgTextureError=11_white_lines.png&bgImgOpacityError=40&borderColorError=268bd2&fcError=ffffff&iconColorError=ffffff&bgColorOverlay=222222&bgTextureOverlay=01_flat.png&bgImgOpacityOverlay=50&opacityOverlay=80&bgColorShadow=cccccc&bgTextureShadow=01_flat.png&bgImgOpacityShadow=30&opacityShadow=60&thicknessShadow=7px&offsetTopShadow=-7px&offsetLeftShadow=-7px&cornerRadiusShadow=8px
+
+
 @import "compass/css3";
 
 $mercury:	rgb(235,235,235);
@@ -24,20 +27,52 @@ body {
 		height:		$headerHeight;
 		width:		100%;
 		
-		padding:	0 22px;
+		padding:	0;// 22px;
 				
 		background-color:	rgba(0, 0, 0, .9);
 		border:	1px solid	transparent;
 		
 		h1 {
+			position:	absolute;
+			top:	0;
+			left:	22px;
 			font-weight:	normal;
 			color:			$mercury;
+		}
+		
+		#radio {
+			position:	absolute;
+			top:	15px;
+			right:	22px;//60px;
+			font-size:	12px;
+			.ui-button-text {
+				color:	$mercury;
+			}
+			.ui-state-active .ui-button-text {
+				color:	white;
+			}
 		}
 	}
 	>footer {
 		position:	fixed;
 		right:	0;
 		bottom:	0;
+		a {
+			display:	block;
+			//float: 		right;
+			font-size:	10px;
+			color:		white;
+			text-decoration:	none;
+			padding: 0 20px;
+			opacity:	.5;
+			&:hover, &:visited:hover {
+				color:	$blue;
+				opacity:	1;
+			}
+			&:visited {
+				color:		white;
+			}
+		}
 	}
 }
 
@@ -45,27 +80,21 @@ body {
 	padding-top: $headerHeight;
 }
 
+.visual_search {
+	margin:	20px;
+}
+
 #deck {
 	margin:	16px 16px 0 16px;
 	
-	> div {
-//		@include transition-property(all);
-//		@include box-shadow(#ccc 0px 0px 10px);
-//		background-color:	white;
-//		opacity:			.8 !important;
+	> div.panel {
 		
 		width: 210px;
 		height: 210px;
 		margin: 5px;
 		float: left;
-//		overflow: hidden;
 		position: relative;
 		
-//		&:hover {
-//			@include box-shadow(#aab 0px 0px 10px);
-//			opacity:	1 !important;
-//		}
-			
 		>* {
 			position: absolute;
 			margin: 0;
@@ -87,8 +116,46 @@ body {
 
 ///// http://css3playground.com/flip-card.php
 
+html.noScroll {
+	.panel {
+		-webkit-perspective: none !important;
+	}
+	.panel .front {
+		display:	block;
+		-webkit-transform: none !important;
+		-webkit-transform-style: flat !important;
+		-webkit-backface-visibility: visible;
+		-webkit-transition: none !important;
+	}
+	.panel.flip .front {
+		display:	none;
+		-webkit-transform: none !important;
+	}
+	.panel .back {
+		display:	none;
+		-webkit-transform: none !important;
+		-webkit-transform-style: flat !important;
+		-webkit-backface-visibility: visible;
+		-webkit-transition: none !important;
+	}
+	.panel.flip .back {
+		display:	block;
+		-webkit-transform: none !important;
+	}
+}
+
 .panel {
 	-webkit-perspective: 600;
+	.card {
+		width: inherit;
+		//height: inherit;
+		height: 190px;
+		//min-height:	200px;
+	}
+	.meta {
+		bottom:	0;
+		right:	10px;
+	}
 }
 
 .panel .front {
@@ -101,33 +168,48 @@ body {
 			height: inherit;
 			border: 1px solid #ccc;
 			background: white;
-			text-align: center;
+			//text-align: center;
 
-			/*box-shadow: 0 1px 5px rgba(0,0,0,0.9);
-			-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
-			-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9);*/
+	
 
 			-webkit-transform: rotateY(0deg);
 			-webkit-transform-style: preserve-3d;
 			-webkit-backface-visibility: hidden;
 
-			/* -- transition is the magic sauce for animation -- */
+			
 			transition: all .4s ease-in-out;
 			-moz-transition: all .4s ease-in-out;
 			-webkit-transition: all .4s ease-in-out;
-		}
-		.panel.flip .front {
+			
+			>img {
+				width:	100%;
+			}
+			
+			>h1 {
+				margin:		5px;
+				padding:	0;
+				font-size:	14px;
+				line-height:	1.2em;
+				//height:			2.4em;
+				//max-height:		2.4em;
+				//width:			100%;
+				//overflow-y:		hidden;
+				//text-overflow: ellipsis;
+			}
+			
+			>div {
+				font-size: 6px;
+			}
+}
+.panel.flip .front {
 			z-index: 900;
 			border-color: #eee;
 
 			-webkit-transform: rotateY(180deg);
 
-			/*box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-			-moz-box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-			-webkit-box-shadow: 0 15px 50px rgba(0,0,0,0.2);*/
-		}
+}
 
-		.panel .back {
+.panel .back {
 			float: none;
 			position: absolute;
 			top: 0;
@@ -137,33 +219,37 @@ body {
 			height: inherit;
 			border: 1px solid #ccc;
 			background: white;
-			/*text-shadow: 1px  1px 1px rgba(0,0,0,0.6); */
+		
 
 			-webkit-transform: rotateY(-180deg);
 			-webkit-transform-style: preserve-3d;
 			-webkit-backface-visibility: hidden;
 
-			/* -- transition is the magic sauce for animation -- */
+			
 			transition: all .4s ease-in-out;
 			-moz-transition: all .4s ease-in-out;
 			-webkit-transition: all .4s ease-in-out;
-		}
+			
+			textarea {
+				width:	100%;
+				height:	100%;
+				border:	none;
+				font-family:	Georgia, serif;
+				background-color:	$base3;
+				outline:	none !important;
+			}
+}
 
-		.panel.flip .back {
+.panel.flip .back {
 			z-index: 1000;
 
 			-webkit-transform: rotateY(0deg);
-			/*box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-			-moz-box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-			-webkit-box-shadow: 0 15px 50px rgba(0,0,0,0.2);*/
-		}
+			
+}
 
 
 .ui-effects-transfer { border: 2px dotted $blue; }
 
-/*.panel {
-    border: 1px dotted yellow !important;
-}*/
 .ui-state-highlight2 {
     border: 1px dotted blueviolet !important;
 }
@@ -172,6 +258,13 @@ body {
     background-color: red !important;
     opacity:    1 !important;
 }
+
+.ui-resizable-handle {
+	opacity: .5;
+}
+
+
+
 #deck canvas {
     z-index: 1000;
 }

@@ -1,6 +1,7 @@
 package com.plesper;
 
 import com.sun.jersey.api.view.Viewable;
+import com.sun.jersey.spi.resource.Singleton;
 import java.io.IOException;
 import java.util.Properties;
 import javax.servlet.ServletContext;
@@ -16,15 +17,19 @@ import javax.ws.rs.core.MediaType;
  * @author Laurian Gridinoc
  */
 @Path("/")
+@Singleton 
 public class Space {
 
     private @Context
-    ServletContext servletContext;
+        ServletContext servletContext;
+    
     private Properties properties = new Properties();
+    public static Space self;
 
     public Space() throws IOException {
         properties.load(
                 this.getClass().getClassLoader().getResourceAsStream("app.properties"));
+        self = this;
     }
 
     @GET
@@ -43,9 +48,5 @@ public class Space {
 
     public Properties getProperties() {
         return properties;
-    }
-
-    public void setProperties(Properties properties) {
-        this.properties = properties;
     }
 }

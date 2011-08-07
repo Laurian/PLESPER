@@ -469,7 +469,7 @@ html * {
   rendering-intent: auto;
 }
 
-/* line 18, ../WEB-INF/sass/style.scss */
+/* line 21, ../WEB-INF/sass/style.scss */
 body > header {
   -moz-box-shadow: 0px 0px 5px #333333;
   -webkit-box-shadow: 0px 0px 5px #333333;
@@ -479,51 +479,92 @@ body > header {
   z-index: 1024;
   height: 62px;
   width: 100%;
-  padding: 0 22px;
+  padding: 0;
   background-color: rgba(0, 0, 0, 0.9);
   border: 1px solid	transparent;
 }
-/* line 32, ../WEB-INF/sass/style.scss */
+/* line 35, ../WEB-INF/sass/style.scss */
 body > header h1 {
+  position: absolute;
+  top: 0;
+  left: 22px;
   font-weight: normal;
   color: #ebebeb;
 }
-/* line 37, ../WEB-INF/sass/style.scss */
+/* line 43, ../WEB-INF/sass/style.scss */
+body > header #radio {
+  position: absolute;
+  top: 15px;
+  right: 22px;
+  font-size: 12px;
+}
+/* line 48, ../WEB-INF/sass/style.scss */
+body > header #radio .ui-button-text {
+  color: #ebebeb;
+}
+/* line 51, ../WEB-INF/sass/style.scss */
+body > header #radio .ui-state-active .ui-button-text {
+  color: white;
+}
+/* line 56, ../WEB-INF/sass/style.scss */
 body > footer {
   position: fixed;
   right: 0;
   bottom: 0;
 }
+/* line 60, ../WEB-INF/sass/style.scss */
+body > footer a {
+  display: block;
+  font-size: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 0 20px;
+  opacity: .5;
+}
+/* line 68, ../WEB-INF/sass/style.scss */
+body > footer a:hover, body > footer a:visited:hover {
+  color: #268bd2;
+  opacity: 1;
+}
+/* line 72, ../WEB-INF/sass/style.scss */
+body > footer a:visited {
+  color: white;
+}
 
-/* line 44, ../WEB-INF/sass/style.scss */
+/* line 79, ../WEB-INF/sass/style.scss */
 #page {
   padding-top: 62px;
 }
 
-/* line 48, ../WEB-INF/sass/style.scss */
+/* line 83, ../WEB-INF/sass/style.scss */
+.visual_search {
+  margin: 20px;
+}
+
+/* line 87, ../WEB-INF/sass/style.scss */
 #deck {
   margin: 16px 16px 0 16px;
 }
-/* line 51, ../WEB-INF/sass/style.scss */
-#deck > div {
+/* line 90, ../WEB-INF/sass/style.scss */
+#deck > div.panel {
   width: 210px;
   height: 210px;
   margin: 5px;
   float: left;
   position: relative;
 }
-/* line 69, ../WEB-INF/sass/style.scss */
-#deck > div > * {
+/* line 98, ../WEB-INF/sass/style.scss */
+#deck > div.panel > * {
   position: absolute;
   margin: 0;
 }
-/* line 74, ../WEB-INF/sass/style.scss */
-#deck > div article {
+/* line 103, ../WEB-INF/sass/style.scss */
+#deck > div.panel article {
   padding: 5px;
   width: 100%;
 }
-/* line 77, ../WEB-INF/sass/style.scss */
-#deck > div article h1 {
+/* line 106, ../WEB-INF/sass/style.scss */
+#deck > div.panel article h1 {
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -531,12 +572,53 @@ body > footer {
   font-family: Georgia, 'Times New Roman', serif;
 }
 
-/* line 90, ../WEB-INF/sass/style.scss */
+/* line 120, ../WEB-INF/sass/style.scss */
+html.noScroll .panel {
+  -webkit-perspective: none !important;
+}
+/* line 123, ../WEB-INF/sass/style.scss */
+html.noScroll .panel .front {
+  display: block;
+  -webkit-transform: none !important;
+  -webkit-transform-style: flat !important;
+  -webkit-backface-visibility: visible;
+  -webkit-transition: none !important;
+}
+/* line 130, ../WEB-INF/sass/style.scss */
+html.noScroll .panel.flip .front {
+  display: none;
+  -webkit-transform: none !important;
+}
+/* line 134, ../WEB-INF/sass/style.scss */
+html.noScroll .panel .back {
+  display: none;
+  -webkit-transform: none !important;
+  -webkit-transform-style: flat !important;
+  -webkit-backface-visibility: visible;
+  -webkit-transition: none !important;
+}
+/* line 141, ../WEB-INF/sass/style.scss */
+html.noScroll .panel.flip .back {
+  display: block;
+  -webkit-transform: none !important;
+}
+
+/* line 147, ../WEB-INF/sass/style.scss */
 .panel {
   -webkit-perspective: 600;
 }
+/* line 149, ../WEB-INF/sass/style.scss */
+.panel .card {
+  width: inherit;
+  height: 190px;
+}
+/* line 155, ../WEB-INF/sass/style.scss */
+.panel .meta {
+  bottom: 0;
+  right: 10px;
+}
 
-/* line 94, ../WEB-INF/sass/style.scss */
+/* line 161, ../WEB-INF/sass/style.scss */
 .panel .front {
   float: none;
   position: absolute;
@@ -547,30 +629,37 @@ body > footer {
   height: inherit;
   border: 1px solid #ccc;
   background: white;
-  text-align: center;
-  /*box-shadow: 0 1px 5px rgba(0,0,0,0.9);
-  -moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
-  -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9);*/
   -webkit-transform: rotateY(0deg);
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  /* -- transition is the magic sauce for animation -- */
   transition: all .4s ease-in-out;
   -moz-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
 }
+/* line 184, ../WEB-INF/sass/style.scss */
+.panel .front > img {
+  width: 100%;
+}
+/* line 188, ../WEB-INF/sass/style.scss */
+.panel .front > h1 {
+  margin: 5px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.2em;
+}
+/* line 200, ../WEB-INF/sass/style.scss */
+.panel .front > div {
+  font-size: 6px;
+}
 
-/* line 119, ../WEB-INF/sass/style.scss */
+/* line 204, ../WEB-INF/sass/style.scss */
 .panel.flip .front {
   z-index: 900;
   border-color: #eee;
   -webkit-transform: rotateY(180deg);
-  /*box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-  -webkit-box-shadow: 0 15px 50px rgba(0,0,0,0.2);*/
 }
 
-/* line 130, ../WEB-INF/sass/style.scss */
+/* line 212, ../WEB-INF/sass/style.scss */
 .panel .back {
   float: none;
   position: absolute;
@@ -581,46 +670,52 @@ body > footer {
   height: inherit;
   border: 1px solid #ccc;
   background: white;
-  /*text-shadow: 1px  1px 1px rgba(0,0,0,0.6); */
   -webkit-transform: rotateY(-180deg);
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
-  /* -- transition is the magic sauce for animation -- */
   transition: all .4s ease-in-out;
   -moz-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
 }
+/* line 233, ../WEB-INF/sass/style.scss */
+.panel .back textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-family: Georgia, serif;
+  background-color: #fdf6e3;
+  outline: none !important;
+}
 
-/* line 152, ../WEB-INF/sass/style.scss */
+/* line 243, ../WEB-INF/sass/style.scss */
 .panel.flip .back {
   z-index: 1000;
   -webkit-transform: rotateY(0deg);
-  /*box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-  -moz-box-shadow: 0 15px 50px rgba(0,0,0,0.2);
-  -webkit-box-shadow: 0 15px 50px rgba(0,0,0,0.2);*/
 }
 
-/* line 162, ../WEB-INF/sass/style.scss */
+/* line 251, ../WEB-INF/sass/style.scss */
 .ui-effects-transfer {
   border: 2px dotted #268bd2;
 }
 
-/*.panel {
-    border: 1px dotted yellow !important;
-}*/
-/* line 167, ../WEB-INF/sass/style.scss */
+/* line 253, ../WEB-INF/sass/style.scss */
 .ui-state-highlight2 {
   border: 1px dotted blueviolet !important;
 }
 
-/* line 170, ../WEB-INF/sass/style.scss */
+/* line 256, ../WEB-INF/sass/style.scss */
 .ui-state-highlight3 {
   border: 1px dotted red !important;
   background-color: red !important;
   opacity: 1 !important;
 }
 
-/* line 175, ../WEB-INF/sass/style.scss */
+/* line 262, ../WEB-INF/sass/style.scss */
+.ui-resizable-handle {
+  opacity: .5;
+}
+
+/* line 268, ../WEB-INF/sass/style.scss */
 #deck canvas {
   z-index: 1000;
 }

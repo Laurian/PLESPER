@@ -1,10 +1,74 @@
 	$(function(){
             
-                
+    $(".panel").click(function(evt) {
+            $(this).zoomTo({targetsize:0.75, duration:600});
+            evt.stopPropagation();
+    });
+    
+    
+    $(window).click(function(evt) {
+            $("body").zoomTo({targetsize:1.0, duration:600});
+            evt.stopPropagation();
+    });
+    //$("body").zoomTo({targetsize:1.0, duration:600});        
+            
+    VS.init({
+      container : $('.visual_search'),
+      query     : '',
+      callbacks : {
+        search       : function(query) {},
+        facetMatches : function(callback) {
+    callback([
+      'account', 'filter', 'access', 'title',
+      { label: 'city',    category: 'location' },
+      { label: 'address', category: 'location' },
+      { label: 'country', category: 'location' },
+      { label: 'state',   category: 'location' },
+    ]);
+  },
+        valueMatches : function(facet, searchTerm, callback) {
+    switch (facet) {
+    case 'account':
+        callback([
+          { value: '1-amanda', label: 'Amanda' },
+          { value: '2-aron',   label: 'Aron' },
+          { value: '3-eric',   label: 'Eric' },
+          { value: '4-jeremy', label: 'Jeremy' },
+          { value: '5-samuel', label: 'Samuel' },
+          { value: '6-scott',  label: 'Scott' }
+        ]);
+        break;
+      case 'filter':
+        callback(['published', 'unpublished', 'draft']);
+        break;
+      case 'access':
+        callback(['public', 'private', 'protected']);
+        break;
+      case 'title':
+        callback([
+          'Pentagon Papers',
+          'CoffeeScript Manual',
+          'Laboratory for Object Oriented Thinking',
+          'A Repository Grows in Brooklyn'
+        ]);
+        break;
+    }
+  }
+      }
+    });
+            
+                $( "#radio" ).buttonset();
 		
-		$('.hover').live('click', function(){
-						$(this).toggleClass('flip');
-					});
+		$('.hover').live('dblclick', function(){
+			//$(this).toggleClass('flip');
+                        if (! $(this).hasClass('flip')) {
+                            $(this).addClass('flip');
+                        }
+		});
+                
+                $('.panel textarea').live('blur', function() {
+                    $(this).parents('.hover').removeClass('flip');
+                });
 					
 					
 		$('#deck').isotope({
@@ -306,7 +370,8 @@ function add(url, title, body, $transfer) {
 
 // hook URLs in search
 function hookSearch() {
-    var urlregex = new RegExp("^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
+    //var urlregex = new RegExp("^(http|https|ftp)\://([a-zA-Z0-9\.\-]+(\:[a-zA-Z0-9\.&amp;%\$\-]+)*@)*((25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])|([a-zA-Z0-9\-]+\.)*[a-zA-Z0-9\-]+\.(com|edu|gov|int|mil|net|org|biz|arpa|info|name|pro|aero|coop|museum|[a-zA-Z]{2}))(\:[0-9]+)*(/($|[a-zA-Z0-9\.\,\?\'\\\+&amp;%\$#\=~_\-]+))*$");
+    var urlregex = new RegExp("^(http|https|feed)\://.*$");
 
     var $search = $('input.gsc-search-button');
     var $query = $('input.gsc-input');

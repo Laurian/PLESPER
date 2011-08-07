@@ -19,7 +19,6 @@
     <properties>
         <jersey-version>1.9-ea01</jersey-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<!--        <netbeans.hint.deploy.server>Tomcat70</netbeans.hint.deploy.server>-->
     </properties>
     
     <dependencies>
@@ -79,6 +78,12 @@
             <groupId>mx.bigdata.jcalais</groupId>
             <artifactId>j-calais</artifactId>
             <version>0.3</version>
+        </dependency>
+        
+        <dependency>    
+            <groupId>rome</groupId>   
+            <artifactId>rome</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <dependency>
@@ -190,6 +195,7 @@
         <finalName>plesper</finalName>
         <filters>
             <filter>src/main/filters/filter.properties</filter>
+            <filter>src/main/filters/api-keys.properties</filter>
         </filters>
         <resources>
             <resource>
@@ -245,17 +251,6 @@
                     <verbose>true</verbose>
                 </configuration>
             </plugin>
-<!--            <plugin>
-                <groupId>br.com.ingenieux</groupId>
-                <artifactId>beanstalk-maven-plugin</artifactId>
-                <version>0.2.4-SNAPSHOT</version>
-                <configuration>
-                    <applicationName>plesper</applicationName>
-                    <environmentName>plesper</environmentName>
-                    <solutionStack>64bit Amazon Linux running Tomcat 7</solutionStack>
-                    <s3Bucket>plesper</s3Bucket>
-                </configuration>
-            </plugin>-->
         </plugins>
     </build>
 </project>

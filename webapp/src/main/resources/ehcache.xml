@@ -5,44 +5,18 @@
     <diskStore path="java.io.tmpdir"/>
 
     <defaultCache
-            maxElementsInMemory="10"
+            maxElementsInMemory="1024"
             eternal="false"
-            timeToIdleSeconds="5"
-            timeToLiveSeconds="10"
+            timeToIdleSeconds="3600"
+            timeToLiveSeconds="43200"
             overflowToDisk="true"
-            />
+    />
 
-    <!-- Page and Page Fragment Caches -->
-
-<!--    <cache name="CachePage1CachingFilter"
-           maxElementsInMemory="10"
+    <cache name="Static"
+           maxElementsInMemory="1024"
            eternal="false"
-           timeToIdleSeconds="10000"
-           timeToLiveSeconds="10000"
-           overflowToDisk="true">
-    </cache>-->
-
-    <cache name="CachedPage2Cache"
-           maxElementsInMemory="128"
-           eternal="true"
-           timeToLiveSeconds="3600"
+           timeToLiveSeconds="43200"
            overflowToDisk="true">
     </cache>
-
-<!--    <cache name="SimplePageFragmentCachingFilter"
-           maxElementsInMemory="10"
-           eternal="false"
-           timeToIdleSeconds="10000"
-           timeToLiveSeconds="10000"
-           overflowToDisk="true">
-    </cache>
-
-    <cache name="SimpleCachingHeadersTimeoutPageCachingFilter"
-           maxElementsInMemory="10"
-           eternal="false"
-           timeToIdleSeconds="10000"
-           timeToLiveSeconds="10000"
-           overflowToDisk="true">
-    </cache>-->
 
 </ehcache>

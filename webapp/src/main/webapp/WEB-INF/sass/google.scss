@@ -8,6 +8,7 @@ $mercury:	rgb(235,235,235);
 	@include transition-duration(1s);
 	@include transition-delay(5s);
 	opacity:		.5;
+	width:			96% !important;
 	
 	&:hover {
 		@include transition-duration(.1s);

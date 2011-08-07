@@ -13,8 +13,9 @@
   -o-transition-delay: 5s;
   transition-delay: 5s;
   opacity: .5;
+  width: 96% !important;
 }
-/* line 12, ../WEB-INF/sass/google.scss */
+/* line 13, ../WEB-INF/sass/google.scss */
 #cse:hover {
   -moz-transition-duration: 0.1s;
   -webkit-transition-duration: 0.1s;
@@ -26,37 +27,37 @@
   transition-delay: 0s;
   opacity: .9;
 }
-/* line 17, ../WEB-INF/sass/google.scss */
+/* line 18, ../WEB-INF/sass/google.scss */
 #cse .gsc-control-cse {
   border-color: #EBEBEB;
   background-color: #EBEBEB;
 }
-/* line 22, ../WEB-INF/sass/google.scss */
+/* line 23, ../WEB-INF/sass/google.scss */
 #cse input.gsc-input {
   border-color: #93a1a1;
 }
-/* line 25, ../WEB-INF/sass/google.scss */
+/* line 26, ../WEB-INF/sass/google.scss */
 #cse input.gsc-search-button {
   border-color: #93a1a1;
   background-color: #EBEBEB;
 }
-/* line 29, ../WEB-INF/sass/google.scss */
+/* line 30, ../WEB-INF/sass/google.scss */
 #cse .gsc-tabHeader.gsc-tabhInactive {
   border-color: #E9E9E9;
   background-color: #E9E9E9;
 }
-/* line 33, ../WEB-INF/sass/google.scss */
+/* line 34, ../WEB-INF/sass/google.scss */
 #cse .gsc-tabHeader.gsc-tabhActive {
   border-top-color: #93a1a1;
   border-left-color: #E9E9E9;
   border-right-color: #E9E9E9;
   background-color: #FFFFFF;
 }
-/* line 39, ../WEB-INF/sass/google.scss */
+/* line 40, ../WEB-INF/sass/google.scss */
 #cse .gsc-tabsArea {
   border-color: #E9E9E9;
 }
-/* line 42, ../WEB-INF/sass/google.scss */
+/* line 43, ../WEB-INF/sass/google.scss */
 #cse .gsc-webResult.gsc-result {
   -moz-transition-property: background-color;
   -webkit-transition-property: background-color;
@@ -73,154 +74,154 @@
   border-color: #EBEBEB;
   background-color: #EBEBEB;
 }
-/* line 49, ../WEB-INF/sass/google.scss */
+/* line 50, ../WEB-INF/sass/google.scss */
 #cse .gsc-webResult.gsc-result:hover {
   border-color: #FFFFFF;
   background-color: #FFFFFF;
 }
-/* line 54, ../WEB-INF/sass/google.scss */
+/* line 55, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult.gs-result a.gs-title:link,
 #cse .gs-webResult.gs-result a.gs-title:link b {
   color: #268bd2;
 }
-/* line 58, ../WEB-INF/sass/google.scss */
+/* line 59, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult.gs-result a.gs-title:visited,
 #cse .gs-webResult.gs-result a.gs-title:visited b {
   color: #6c71c4;
 }
-/* line 62, ../WEB-INF/sass/google.scss */
+/* line 63, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult.gs-result a.gs-title:hover,
 #cse .gs-webResult.gs-result a.gs-title:hover b {
   color: #d33682;
 }
-/* line 66, ../WEB-INF/sass/google.scss */
+/* line 67, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult.gs-result a.gs-title:active,
 #cse .gs-webResult.gs-result a.gs-title:active b {
   color: #dc322f;
 }
-/* line 69, ../WEB-INF/sass/google.scss */
+/* line 70, ../WEB-INF/sass/google.scss */
 #cse .gsc-cursor-page {
   color: #268bd2;
 }
-/* line 72, ../WEB-INF/sass/google.scss */
+/* line 73, ../WEB-INF/sass/google.scss */
 #cse a.gsc-trailing-more-results:link {
   color: #268bd2;
 }
-/* line 75, ../WEB-INF/sass/google.scss */
+/* line 76, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult .gs-snippet {
   color: #002b36;
 }
-/* line 78, ../WEB-INF/sass/google.scss */
+/* line 79, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult div.gs-visibleUrl {
   color: #93a1a1;
 }
-/* line 81, ../WEB-INF/sass/google.scss */
+/* line 82, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult div.gs-visibleUrl-short {
   color: #93a1a1;
 }
-/* line 84, ../WEB-INF/sass/google.scss */
+/* line 85, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult div.gs-visibleUrl-short {
   display: none;
 }
-/* line 87, ../WEB-INF/sass/google.scss */
+/* line 88, ../WEB-INF/sass/google.scss */
 #cse .gs-webResult div.gs-visibleUrl-long {
   display: block;
 }
-/* line 90, ../WEB-INF/sass/google.scss */
+/* line 91, ../WEB-INF/sass/google.scss */
 #cse .gsc-cursor-box {
   border-color: #EBEBEB;
 }
-/* line 93, ../WEB-INF/sass/google.scss */
+/* line 94, ../WEB-INF/sass/google.scss */
 #cse .gsc-results .gsc-cursor-box .gsc-cursor-page {
   border-color: #E9E9E9;
   background-color: #EBEBEB;
   color: #268bd2;
 }
-/* line 98, ../WEB-INF/sass/google.scss */
+/* line 99, ../WEB-INF/sass/google.scss */
 #cse .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
   border-color: #93a1a1;
   background-color: #FFFFFF;
   color: #6c71c4;
 }
-/* line 103, ../WEB-INF/sass/google.scss */
+/* line 104, ../WEB-INF/sass/google.scss */
 #cse .gs-promotion {
   border-color: #EBEBEB;
   background-color: #EBEBEB;
 }
-/* line 109, ../WEB-INF/sass/google.scss */
+/* line 110, ../WEB-INF/sass/google.scss */
 #cse .gs-promotion a.gs-title:link,
 #cse .gs-promotion a.gs-title:link *,
 #cse .gs-promotion .gs-snippet a:link {
   color: #93a1a1;
 }
-/* line 114, ../WEB-INF/sass/google.scss */
+/* line 115, ../WEB-INF/sass/google.scss */
 #cse .gs-promotion a.gs-title:visited,
 #cse .gs-promotion a.gs-title:visited *,
 #cse .gs-promotion .gs-snippet a:visited {
   color: #93a1a1;
 }
-/* line 119, ../WEB-INF/sass/google.scss */
+/* line 120, ../WEB-INF/sass/google.scss */
 #cse .gs-promotion a.gs-title:hover,
 #cse .gs-promotion a.gs-title:hover *,
 #cse .gs-promotion .gs-snippet a:hover {
   color: #93a1a1;
 }
-/* line 124, ../WEB-INF/sass/google.scss */
+/* line 125, ../WEB-INF/sass/google.scss */
 #cse .gs-promotion a.gs-title:active,
 #cse .gs-promotion a.gs-title:active *,
 #cse .gs-promotion .gs-snippet a:active {
   color: #93a1a1;
 }
-/* line 129, ../WEB-INF/sass/google.scss */
+/* line 130, ../WEB-INF/sass/google.scss */
 #cse .gs-promotion .gs-snippet,
 #cse .gs-promotion .gs-title .gs-promotion-title-right,
 #cse .gs-promotion .gs-title .gs-promotion-title-right * {
   color: #93a1a1;
 }
-/* line 133, ../WEB-INF/sass/google.scss */
+/* line 134, ../WEB-INF/sass/google.scss */
 #cse .gs-promotion .gs-visibleUrl,
 #cse .gs-promotion .gs-visibleUrl-short {
   color: #93a1a1;
 }
-/* line 139, ../WEB-INF/sass/google.scss */
+/* line 140, ../WEB-INF/sass/google.scss */
 #cse .gs-title {
   text-decoration: none !important;
 }
-/* line 143, ../WEB-INF/sass/google.scss */
+/* line 144, ../WEB-INF/sass/google.scss */
 #cse .gs-snippet {
   color: #657b83 !important;
 }
-/* line 150, ../WEB-INF/sass/google.scss */
+/* line 151, ../WEB-INF/sass/google.scss */
 #cse a.gs-title {
   border-bottom: 1px dotted white;
 }
-/* line 153, ../WEB-INF/sass/google.scss */
+/* line 154, ../WEB-INF/sass/google.scss */
 #cse a.gs-title:hover {
   border-bottom: 1px solid white;
 }
-/* line 155, ../WEB-INF/sass/google.scss */
+/* line 156, ../WEB-INF/sass/google.scss */
 #cse a.gs-title:hover b {
   border-bottom: 1px solid #268bd2;
 }
-/* line 161, ../WEB-INF/sass/google.scss */
+/* line 162, ../WEB-INF/sass/google.scss */
 #cse a.gs-title b {
   font-weight: normal;
   color: #d33682 !important;
   text-decoration: none !important;
 }
-/* line 168, ../WEB-INF/sass/google.scss */
+/* line 169, ../WEB-INF/sass/google.scss */
 #cse .gsc-cursor-page {
   text-decoration: none !important;
 }
-/* line 172, ../WEB-INF/sass/google.scss */
+/* line 173, ../WEB-INF/sass/google.scss */
 #cse input.gsc-input:focus {
   outline: none;
 }
-/* line 177, ../WEB-INF/sass/google.scss */
+/* line 178, ../WEB-INF/sass/google.scss */
 #cse iframe {
   opacity: .9;
 }
-/* line 179, ../WEB-INF/sass/google.scss */
+/* line 180, ../WEB-INF/sass/google.scss */
 #cse iframe:hover {
   opacity: 1;
 }

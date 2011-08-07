@@ -30,11 +30,10 @@
         <servlet-class>com.googlecode.webutilities.servlets.JSCSSMergeServlet</servlet-class>
         <init-param>
             <param-name>expiresMinutes</param-name>
-            <param-value>1</param-value>
-            <!-- 43200 = 30 days -->
+            <param-value>43200</param-value>
         </init-param>
     </servlet>
-<!--    <filter>
+    <filter>
         <filter-name>CachingFilter</filter-name>
         <filter-class>net.sf.ehcache.constructs.web.filter.SimpleCachingHeadersPageCachingFilter</filter-class>
         <init-param>
@@ -47,9 +46,9 @@
         </init-param>
         <init-param>
             <param-name>cacheName</param-name>
-            <param-value>CachedPage2Cache</param-value>
+            <param-value>Static</param-value>
         </init-param>
-    </filter>-->
+    </filter>
     <filter>
         <filter-name>compressionFilter</filter-name>
         <filter-class>com.googlecode.webutilities.filters.CompressionFilter</filter-class>
@@ -88,7 +87,7 @@
         <servlet-name>AtmosphereServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-    <!--    <filter-mapping>
+    <filter-mapping>
         <filter-name>CachingFilter</filter-name>
         <url-pattern>*.js</url-pattern>
         <url-pattern>*.css</url-pattern>
@@ -97,7 +96,11 @@
         <url-pattern>*.jpg</url-pattern>
         <url-pattern>*.gif</url-pattern>
         <url-pattern>*.dict</url-pattern>
-    </filter-mapping>-->
+        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.txt</url-pattern>
+        <url-pattern>*.xml</url-pattern>
+        <url-pattern>*.svg</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>compressionFilter</filter-name>
         <url-pattern>/*</url-pattern>
