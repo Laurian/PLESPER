@@ -1,52 +1,44 @@
 package com.plesper;
 
-import com.sun.jersey.api.view.Viewable;
-import com.sun.jersey.spi.resource.Singleton;
-import java.io.IOException;
-import java.util.Properties;
-import javax.servlet.ServletContext;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
 
-/**
- *
- * @author Laurian Gridinoc
- */
-@Path("/")
-@Singleton 
 public class Space {
 
-    private @Context
-        ServletContext servletContext;
-    
-    private Properties properties = new Properties();
-    public static Space self;
+    private Root root;
+    private String name;
+    private HashMap<String, Object> data;
 
-    public Space() throws IOException {
-        properties.load(
-                this.getClass().getClassLoader().getResourceAsStream("app.properties"));
-        self = this;
+    public Space() {
+        data = new HashMap<String, Object>();
     }
 
-    @GET
-    @Path("/")
-    @Produces(MediaType.TEXT_HTML)
-    public Viewable view() {
-        return new Viewable("/index.jsp", this);
+    public Space(String name, Root root) {
+        this();
+        this.name = name;
+        this.root = root;
     }
 
-    @GET
-    @Path("/{space}")
-    @Produces(MediaType.TEXT_HTML)
-    public Viewable view(@PathParam("space") String space) {
-        return new Viewable("/index.jsp", this);
+    public Root getRoot() {
+        return root;
     }
 
-    public Properties getProperties() {
-        return properties;
+    public HashMap<String, Object> getData() {
+        return data;
+    }
+
+    public void setData(HashMap<String, Object> data) {
+        this.data = data;
+    }
+
+    public void setRoot(Root root) {
+        this.root = root;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

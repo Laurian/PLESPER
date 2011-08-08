@@ -6,7 +6,8 @@
 <%
     String prefix = "";
     if ("true".equals(
-            ((com.plesper.Space) request.getAttribute("it")).getProperties().getProperty("dev"))) {
+            ((com.plesper.Space) request.getAttribute("it")).getRoot()
+            .getProperties().getProperty("dev"))) {
         prefix = Long.toHexString(Long.reverse(System.currentTimeMillis()));
     }
 %>
@@ -14,7 +15,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <title>PLESPER <%=prefix%>~${it.properties["git.commit.id.abbrev"]}</title>
+    <title>PLESPER (version ${it.root.properties["git.commit.id.abbrev"]})</title>
 
     <meta name="description" content="">
     <meta name="author" content="">
@@ -25,18 +26,17 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory: 	
     mathiasbynens.be/notes/touch-icons -->
 
-    <link rel="stylesheet" href="<%=prefix%>~${it.properties["git.commit.id.abbrev"]},style/style,jquery.terminal,visualsearch-datauri,zoomooz,dark/jquery-ui-1.8.14.custom.css">
+    <link rel="stylesheet" href="<%=prefix%>~${it.root.properties["git.commit.id.abbrev"]},style/style,jquery.terminal,visualsearch-datauri,zoomooz,dark/jquery-ui-1.8.14.custom.css">
     <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css">
-    <link rel="stylesheet" href="<%=prefix%>~${it.properties["git.commit.id.abbrev"]},style/google.css">
+    <link rel="stylesheet" href="<%=prefix%>~${it.root.properties["git.commit.id.abbrev"]},style/google.css">
 
 
-    <script src="<%=prefix%>~${it.properties["git.commit.id.abbrev"]},script/lib/modernizr-2.0.min,respond.min.js"></script>
+    <script src="<%=prefix%>~${it.root.properties["git.commit.id.abbrev"]},script/lib/modernizr-2.0.min,respond.min.js"></script>
 </head>
-<body>
+<body class="spaceid${it.name}" data-space="${it.name}">
     <div id="tilda"></div>
     <header>
         <h1>PLESPER</h1>
-        
         
         <div id="radio">
             <form>
@@ -49,13 +49,34 @@
         
     </header>	
 
+    <div id="start">
+        <div>
+            <h3>PLESPER</h3>
+            <p>
+                This is an exploration of the PLESPER spatial navigation concept, as well as of the capabilities of some off-the-shelf javascript libraries.
+            </p>
+            
+            <p>
+                To learn more about the thinking behind this please check <a href="http://gridinoc.name/blog/category/mojo/">my MoJo blog posts</a>.
+            </p>
+            
+            <h4>In order to experiment please <button>Create new space</button></h4>
+
+            <p>
+                Here is a video that outlines the concept.
+            </p>
+            
+        </div>
+    </div>
+    
     <div id="page">
         
         <div class="visual_search"></div>
 
         <div id="deck">
             
-   <div class="hover panel" id="p1">
+   <!-- sample -->         
+<!--   <div class="hover panel" id="p1">
        <div class="card">
             <div class="front">
                 <img src="http://flickholdr.com/210/100/mondrian" alt="Placeholder image from flickholdr.com" />
@@ -68,17 +89,11 @@
                 <textarea placeholder="notes…"></textarea>
             </div>	
        </div>
-       <div class="meta">icons</div>
-   </div>
+       <div class="meta"><span class="zoom">zoom</span></div>
+   </div>-->
+   <!-- /sample -->
             
-            <div class="hover panel" id="p2">
-                    <div class="front">
-                            front 2
-                    </div>
-                    <div class="back">
-                            back 2
-                    </div>			
-            </div>
+            
 	</div>
 
         <div>        
@@ -87,14 +102,13 @@
 
     </div>
 
-    <footer>
-        <a href="https://github.com/Laurian/PLESPER/commit/${it.properties["git.commit.id.abbrev"]}">version ${it.properties["git.commit.id.abbrev"]}</a>
-    </footer>
+<!--    <footer>
+        <a href="https://github.com/Laurian/PLESPER/commit/${it.root.properties["git.commit.id.abbrev"]}">version ${it.root.properties["git.commit.id.abbrev"]}</a>
+    </footer>-->
     
 <!--    <a href="https://github.com/Laurian/PLESPER"><img style="z-index: 1025; position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>-->
 
-    <script src="<%=prefix%>~${it.properties["git.commit.id.abbrev"]},script/lib/jquery-1.6.2.min,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4,underscore-1.1.5,backbone-0.5.0,visualsearch,sylvester,purecssmatrix,jquery.animtrans,jquery.zoomooz,../plugins,script.js"></script>
-
+    <script src="<%=prefix%>~${it.root.properties["git.commit.id.abbrev"]},script/lib/jquery-1.6.2.min,jquery.form,jquery.atmosphere,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4,underscore-1.1.5,backbone-0.5.0,visualsearch,sylvester,purecssmatrix,jquery.animtrans,jquery.zoomooz,../plugins,script.js"></script>
     <script src="http://www.google.com/jsapi"></script>
     <script>
 var _gaq=[['_setAccount','UA-2526475-5'],['_trackPageview'],['_trackPageLoadTime']];

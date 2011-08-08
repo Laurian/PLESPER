@@ -1,14 +1,40 @@
+// TODO: SLEEP THEN REWRITE ALL
+
 $(function(){
             
-    $(".panel").click(function(evt) {
+    $(".panel").live('click', function(evt) {
+            if (!$('html').hasClass('noScroll0')) return;
+            //$('html').addClass('noScroll0');
+            if (isoOn) $('#deck').isotope('reLayout');
             $(this).zoomTo({targetsize:0.75, duration:600});
             evt.stopPropagation();
+            
     });
     
+    $(".zoom").live('click', function(evt){
+        if (!$('html').hasClass('noScroll0')) {
+            $('html').addClass('noScroll0');
+            if (isoOn) $('#deck').isotope('reLayout');
+            evt.stopPropagation();
+            $(this).parents('.panel').zoomTo({targetsize:0.75, duration:600});
+        } else {
+            $('html').removeClass('noScroll0');
+            evt.stopPropagation();
+            $("body").zoomTo({targetsize:1.0, duration:600});
+            if (isoOn) $('#deck').isotope('reLayout');
+        }
+    });
     
+    //fixme
+//    $(".panel").click(function(evt) {
+//            evt.stopPropagation();
+//    });
+
     $(window).click(function(evt) {
+            $('html').removeClass('noScroll0');
             $("body").zoomTo({targetsize:1.0, duration:600});
             evt.stopPropagation();
+            if (isoOn) $('#deck').isotope('reLayout');
     });
     $("body").zoomTo({targetsize:1.0, duration:600});        
             
@@ -57,6 +83,10 @@ $(function(){
       }
     });
             
+                $('#start button').button().click(function() {
+                    document.location = document.location + './' + MD5(new Date() + '' + Math.random());
+                });
+                
                 $("#radio").buttonset();
                 
                 $('#radio0').click(function() {
@@ -92,6 +122,141 @@ $(function(){
 				itemPositionDataEnabled: true,
                                 transformsEnabled: false
 		});
+                
+                
+//// pubsub
+
+            var connectedEndpoint;
+            var callbackAdded = false;
+            var detectedTransport = null;
+
+//            function getKeyCode(ev) {
+//                if (window.event) return window.event.keyCode;
+//                return ev.keyCode;
+//            }
+
+//            function getElementById() {
+//                return document.getElementById(arguments[0]);
+//            }
+
+//            function getTransport(t) {
+//                transport = t.options[t.selectedIndex].value;
+//                if (transport == 'autodetect') {
+//                    transport = 'websocket';
+//                }
+//
+//                return false;
+//            }
+
+//            function getElementByIdValue() {
+//                detectedTransport = null;
+//                return document.getElementById(arguments[0]).value;
+//            }
+
+            function subscribe() {
+                // jquery.atmosphere.response
+                function callback(response) {
+                    // Websocket events.
+                    $.atmosphere.log('info', ["response.state: " + response.state]);
+                    $.atmosphere.log('info', ["response.transport: " + response.transport]);
+
+                    detectedTransport = response.transport;
+                    if (response.transport != 'polling' && response.state != 'connected' && response.state != 'closed') {
+                        $.atmosphere.log('info', ["response.responseBody: " + response.responseBody]);
+                        if (response.status == 200) {
+                            var data = response.responseBody;
+                            if (data.length > 0) {
+                                //$('ul').prepend($('<li></li>').text(" Message Received: " + data));
+                                console.log(" Message Received: " + data);
+                            }
+                        }
+                    }
+                }
+
+                var location = '/pubsub/' + $('body').attr('data-space');
+                $.atmosphere.subscribe(location, !callbackAdded ? callback : null,
+                  $.atmosphere.request = { transport: 'websocket' });
+                connectedEndpoint = $.atmosphere.response;
+                callbackAdded = true;
+            }
+
+            function connect() {
+//                getElementById('phrase').value = '';
+//                getElementById('sendMessage').className = '';
+//                getElementById('phrase').focus();
+                subscribe();
+//                getElementById('connect').value = "Switch transport";
+            }
+
+//            getElementById('connect').onclick = function(event) {
+//                if (getElementById('topic').value == '') {
+//                    alert("Please enter a PubSub topic to subscribe");
+//                    return;
+//                }
+//                connect();
+//            }
+
+//            getElementById('topic').onkeyup = function(event) {
+//                getElementById('sendMessage').className = 'hidden';
+//                var keyc = getKeyCode(event);
+//                if (keyc == 13 || keyc == 10) {
+//                    connect();
+//                    return false;
+//                }
+//            }
+
+//            getElementById('phrase').setAttribute('autocomplete', 'OFF');
+//            getElementById('phrase').onkeyup = function(event) {
+//                var keyc = getKeyCode(event);
+//                if (keyc == 13 || keyc == 10) {
+//
+//                    var m = " sent using " + detectedTransport;
+//                    if (detectedTransport == null) {
+//                        detectedTransport = getElementByIdValue('transport');
+//                        m = " sent trying to use " + detectedTransport;
+//                    }
+//
+//                    connectedEndpoint.push('/api/pubsub/' + getElementByIdValue('topic'),
+//                            null,
+//                            $.atmosphere.request = {data: 'message=' + getElementByIdValue('phrase') + m});
+//
+//                    getElementById('phrase').value = '';
+//                    return false;
+//                }
+//                return true;
+//            };
+
+//            getElementById('send_message').onclick = function(event) {
+//                if (getElementById('topic').value == '') {
+//                    alert("Please enter a message to publish");
+//                    return;
+//                }
+//
+//                var m = " sent using " + detectedTransport;
+//                if (detectedTransport == null) {
+//                    detectedTransport = getElementByIdValue('transport');
+//                    m = " sent trying to use " + detectedTransport;
+//                }
+//
+//                connectedEndpoint.push('/api/pubsub/' + getElementById('topic').value,
+//                        null,
+//                        $.atmosphere.request = {data: 'message=' + getElementByIdValue('phrase') + m});
+//
+//                getElementById('phrase').value = '';
+//                return false;
+//            };
+
+             //connect();
+             
+             function send(message) {
+                 connectedEndpoint.push('/pubsub/' + $('body').attr('data-space'),
+                        null,
+                        $.atmosphere.request = {data: 'message=' + message});
+             }
+
+//// pubsub
+                
+//TODO fix sorting                
                 
 //                $('#deck').sortable({
 //                    handle: '.front',
@@ -145,6 +310,8 @@ $(function(){
 		});			
 
 
+                // TODO make this work with spaces
+                // 
 		// $('#tilda').terminal("/rpc", {
 		// 			login: false,
 		// 			greetings: "You are authenticated"}
@@ -194,7 +361,7 @@ $(function(){
 		
 	});
 	
-	// ///
+	// ///TODO move this
 	 ;(function() {
 	 
 	 	window.jsPlumbDemo = {
@@ -235,7 +402,7 @@ $(function(){
 	 })();
 	// 
 	// ///
-	// FIXME
+	// FIXME we're in DOM ready already? nope.
         jsPlumb.bind("ready", function() {
 	 
 	 	// chrome fix.
@@ -262,27 +429,31 @@ $(function(){
 	 
 	 });
          
-var inc = 0;
+var inc = 0; //ugly
 function add(url, title, body, $transfer) {
 ////
-    var $article = $('<article class="front"></article>');
+
+
+    var $article = $('<div class="front"></div>');
     var $title = $('<h1></h1>')
             .text(title);
-    var $body = $('<div class="back"></div>')
+    var $body = $('<div class=text></div>')
             .text(body);
 
-    $article.append($title);
+    $article.append($title)
+        .append($body);
+    $body.after('Visit <a href="'+url+'" target=_new>'+url+'</a>');
                         
-    
+    // TODO have this cached at filter level
     $.get('./api/article/info', {
         url:    url
     }, function(data) {
-        console.log(data);
+        //console.log(data);
         
-        if (data.cresponse != null) {
-            resolveReferences(data.cresponse);
-            console.log(createHierarchy(data.cresponse));
-        }
+//        if (data.cresponse != null) {
+//            resolveReferences(data.cresponse);
+//            console.log(createHierarchy(data.cresponse));
+//        }
         
         if (data.response != null) {
             $title.html(data.response.title);
@@ -298,13 +469,14 @@ function add(url, title, body, $transfer) {
                         'maximum-width': this.clientWidth
                     });
                 });
-                $title.after($image);
+                $title.before($image);
             }
             return;
         }
         
-        $title.html(data.title)
-            .after(data.text);
+        $title.html(data.title);
+            //.after(data.text);
+        $body.html(data.text);
             
         if (data.image != null) {
             $image = $('<img src="' + data.image + '">');
@@ -315,7 +487,7 @@ function add(url, title, body, $transfer) {
                         'maximum-width': this.clientWidth
                     });
             });
-            $body.append($image);
+            $title.after($image);
         }
 //                            for (i = 0; i < data.images.length; i++) {
 //                                $body.append('<img src="' + data.images[i] + '" style="width:64px">')
@@ -323,15 +495,39 @@ function add(url, title, body, $transfer) {
     });
 
 
+//<!-- sample -->         
+//   <div class="hover panel" id="p1">
+//       <div class="card">
+//            <div class="front">
+//                <img src="http://flickholdr.com/210/100/mondrian" alt="Placeholder image from flickholdr.com" />
+//                <h1>long title long title long title long title long title long title long title long title long title long title long title </h1>
+//                <div>
+//                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent venenatis scelerisque urna quis vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed nec venenatis sapien. Vivamus vulputate velit non elit ornare ac commodo orci venenatis. Curabitur eget mauris risus. Nunc a enim id quam congue sagittis. Phasellus ut purus a nunc eleifend porta</p>
+//                </div>
+//            </div>
+//            <div class="back">
+//                <textarea placeholder="notes…"></textarea>
+//            </div>	
+//       </div>
+//       <div class="meta"><span class="zoom">zoom</span></div>
+//   </div>
+//   <!-- /sample -->
+
     inc++;
     var $element = $('<div class="hover panel"></div>')
-            .append($article).attr('id', 'e' + inc);
+            .attr('id', 'e' + inc).addClass('p'+MD5(url));
+    var $card = $('<div class="card"></div>'); 
+     
+    $card.append($article);
+    $article.after('<div class="back"><textarea placeholder="notes..."></textarea></div>');
 
-    $element.append($body);
+    $element.append($card);
+    $card.after('<div class="meta"><span class="zoom">zoom</span></div>');
 
     var $deck = $('#deck');
     $deck.isotope('insert', $element);
 
+    // TODO without 3D transforms isotope-item-position might not be needed anymore
     var ipos = $element.data('isotope-item-position');
     var dpos = $deck.offset();
 
@@ -360,23 +556,24 @@ function add(url, title, body, $transfer) {
 //            var endpoint2 = jsPlumb.addEndpoint('e' + inc, endpointOptions);
     });
 
-    $article.resizable({
-        //grid: [10, 10],
-        animate:    false,
-        animateDuration: 0,
-        helper: 'ui-state-highlight2',
-        stop: function (event, ui) {
-            $(this).parent()
-                .width(ui.size.width)
-                .height(ui.size.height);
-            $('#deck').isotope('reLayout');
-            jsPlumb.repaintEverything();
-        }
-    });
+// FIXME
+//    $element.resizable({
+//        //grid: [10, 10],
+//        animate:    false,
+//        animateDuration: 0,
+//        helper: 'ui-state-highlight2',
+//        stop: function (event, ui) {
+//            $(this).parent()
+//                .width(ui.size.width)
+//                .height(ui.size.height);
+//            $('#deck').isotope('reLayout');
+//            jsPlumb.repaintEverything();
+//        }
+//    });
 ////                        
 }
 
-var isoOn = true;
+var isoOn = true; //ugly, wrong, etc.
 function iso() {
     if (isoOn) return;
     isoOn = true;

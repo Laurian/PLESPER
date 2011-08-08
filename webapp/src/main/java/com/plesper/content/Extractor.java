@@ -1,7 +1,7 @@
+// THIS IS A MESS!
+
 package com.plesper.content;
 
-import com.sun.syndication.io.FeedException;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ws.rs.GET;
@@ -36,8 +36,6 @@ import mx.bigdata.jcalais.CalaisConfig;
 import mx.bigdata.jcalais.CalaisObject;
 import mx.bigdata.jcalais.CalaisResponse;
 import mx.bigdata.jcalais.rest.CalaisRestClient;
-import org.atmosphere.cpr.AtmosphereResourceImpl;
-import org.atmosphere.samples.pubsub.JQueryPubSub;
 
 /**
  *
@@ -77,7 +75,10 @@ public class Extractor {
     @Produces("application/json")
     public Extractor getArticleData(@QueryParam("url") String url) {
 
-        feed(url);
+        //TODO parallelise this
+        
+        // TODO import feed items
+        //feed(url);
         
         oEmbed(url);
 
@@ -87,13 +88,16 @@ public class Extractor {
         text = a.getCleanedArticleText();
         domain = a.getDomain();
         link = a.getCanonicalLink();
+        
+        // TODO fork & fix the Goose for this
         //images = a.getImageCandidates();
 
         if (a.getTopImage() != null) {
             image = a.getTopImage().getImageSrc();
         }
 
-        enrich(url, text);
+        // TODO use Calais tags, etc
+        //enrich(url, text);
 
         return this;
     }
@@ -184,6 +188,7 @@ public class Extractor {
                     + tags.getField("name"));
         }
 
+        // TODO broadcast this to all the users on the same space
         //JQueryPubSub.test.bcast("OPEN CALAIS!");
     }
 

@@ -89,8 +89,7 @@ body {
 	
 	> div.panel {
 		
-		width: 210px;
-		height: 210px;
+		
 		margin: 5px;
 		float: left;
 		position: relative;
@@ -100,29 +99,63 @@ body {
 			margin: 0;
 		}
 		
-		article {
-			padding:	5px;
-			width:		100%;
-			h1 {
-				margin:		0;
-				padding:	0;
-				font-size:	16px;
-				font-weight:	normal;
-				font-family:	Georgia, 'Times New Roman', serif;
-			}
+		//article {
+		//			padding:	5px;
+		//			width:		100%;
+		//			h1 {
+		//				margin:		0;
+		//				padding:	0;
+		//				font-size:	16px;
+		//				font-weight:	normal;
+		//				font-family:	Georgia, 'Times New Roman', serif;
+		//			}
+		//		}
+	}
+}
+
+
+
+#start {
+	padding-top: $headerHeight;
+	display: none;
+	>div {
+		width:		80%;
+		padding:	20px;
+		margin:		50px auto auto auto;
+		background-color:	white;
+		border:		1px solid $blue;
+		.ui-button-text {
+			color:	$mercury;
+		}
+		.ui-state-active .ui-button-text {
+			color:	white;
 		}
 	}
 }
 
-///// http://css3playground.com/flip-card.php
+body.spaceid {
+	#radio, #page {
+		display: none;
+	}
+	#start {
+		display: block;
+	}
+}
 
-html.noScroll {
+///// http://css3playground.com/flip-card.php
+html.noScroll, html.noScroll0 {
 	.panel {
 		-webkit-perspective: none !important;
 		-webkit-transform: none !important;
 		-webkit-transform-style: flat !important;
 		-webkit-backface-visibility: visible;
 		-webkit-transition: none !important;
+		
+		width: 610px;
+		height: 410px;
+		.card {
+			height: 390px;
+		}
 	}
 	.panel .front {
 		display:	block;
@@ -130,6 +163,8 @@ html.noScroll {
 		-webkit-transform-style: flat !important;
 		-webkit-backface-visibility: visible;
 		-webkit-transition: none !important;
+		
+		overflow:	scroll;
 	}
 	.panel.flip .front {
 		display:	none;
@@ -150,6 +185,10 @@ html.noScroll {
 
 .panel {
 	-webkit-perspective: 600;
+	
+	width: 210px;
+	height: 210px;
+	
 	.card {
 		width: inherit;
 		//height: inherit;
@@ -173,6 +212,7 @@ html.noScroll {
 			border: 1px solid #ccc;
 			background: white;
 			//text-align: center;
+			overflow:	scroll;
 
 	
 
@@ -202,7 +242,7 @@ html.noScroll {
 			}
 			
 			>div {
-				font-size: 6px;
+				font-size: 10px;
 			}
 }
 .panel.flip .front {

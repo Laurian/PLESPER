@@ -52,7 +52,7 @@
                     }
                 }
 
-                var location = '/api/pubsub/' + getElementByIdValue('topic');
+                var location = '/pubsub/' + getElementByIdValue('topic');
                 $.atmosphere.subscribe(location, !callbackAdded ? callback : null,
                         $.atmosphere.request = { transport: getElementByIdValue('transport') });
                 connectedEndpoint = $.atmosphere.response;
@@ -95,7 +95,7 @@
                         m = " sent trying to use " + detectedTransport;
                     }
 
-                    connectedEndpoint.push('/api/pubsub/' + getElementByIdValue('topic'),
+                    connectedEndpoint.push('/pubsub/' + getElementByIdValue('topic'),
                             null,
                             $.atmosphere.request = {data: 'message=' + getElementByIdValue('phrase') + m});
 
@@ -117,7 +117,7 @@
                     m = " sent trying to use " + detectedTransport;
                 }
 
-                connectedEndpoint.push('/api/pubsub/' + getElementById('topic').value,
+                connectedEndpoint.push('/pubsub/' + getElementById('topic').value,
                         null,
                         $.atmosphere.request = {data: 'message=' + getElementByIdValue('phrase') + m});
 

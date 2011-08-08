@@ -47,7 +47,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import test.Bcast;
 
 /**
  * Simple PubSub resource that demonstrate many functionality supported by
@@ -55,21 +54,18 @@ import test.Bcast;
  *
  * @author Jeanfrancois Arcand
  */
-@Path("/api/pubsub/{topic}")
+@Path("/pubsub/{topic}")
 @Produces("text/html;charset=UTF-8")
 public class JQueryPubSub {
 
     private @PathParam("topic") Broadcaster topic;
     
-    public static Bcast test = new Bcast();
-
     @GET
     public SuspendResponse<String> subscribe() {
         return new SuspendResponse.SuspendResponseBuilder<String>()
                 .broadcaster(topic)
                 .outputComments(true)
                 .addListener(new EventsLogger())
-                .addListener(test)
                 .build();
     }
 

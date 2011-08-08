@@ -547,82 +547,107 @@ body > footer a:visited {
 }
 /* line 90, ../WEB-INF/sass/style.scss */
 #deck > div.panel {
-  width: 210px;
-  height: 210px;
   margin: 5px;
   float: left;
   position: relative;
 }
-/* line 98, ../WEB-INF/sass/style.scss */
+/* line 97, ../WEB-INF/sass/style.scss */
 #deck > div.panel > * {
   position: absolute;
   margin: 0;
 }
-/* line 103, ../WEB-INF/sass/style.scss */
-#deck > div.panel article {
-  padding: 5px;
-  width: 100%;
+
+/* line 118, ../WEB-INF/sass/style.scss */
+#start {
+  padding-top: 62px;
+  display: none;
 }
-/* line 106, ../WEB-INF/sass/style.scss */
-#deck > div.panel article h1 {
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
-  font-weight: normal;
-  font-family: Georgia, 'Times New Roman', serif;
+/* line 121, ../WEB-INF/sass/style.scss */
+#start > div {
+  width: 80%;
+  padding: 20px;
+  margin: 50px auto auto auto;
+  background-color: white;
+  border: 1px solid #268bd2;
+}
+/* line 127, ../WEB-INF/sass/style.scss */
+#start > div .ui-button-text {
+  color: #ebebeb;
+}
+/* line 130, ../WEB-INF/sass/style.scss */
+#start > div .ui-state-active .ui-button-text {
+  color: white;
 }
 
-/* line 120, ../WEB-INF/sass/style.scss */
-html.noScroll .panel {
+/* line 137, ../WEB-INF/sass/style.scss */
+body.spaceid #radio, body.spaceid #page {
+  display: none;
+}
+/* line 140, ../WEB-INF/sass/style.scss */
+body.spaceid #start {
+  display: block;
+}
+
+/* line 147, ../WEB-INF/sass/style.scss */
+html.noScroll .panel, html.noScroll0 .panel {
   -webkit-perspective: none !important;
   -webkit-transform: none !important;
   -webkit-transform-style: flat !important;
   -webkit-backface-visibility: visible;
   -webkit-transition: none !important;
+  width: 610px;
+  height: 410px;
 }
-/* line 127, ../WEB-INF/sass/style.scss */
-html.noScroll .panel .front {
+/* line 156, ../WEB-INF/sass/style.scss */
+html.noScroll .panel .card, html.noScroll0 .panel .card {
+  height: 390px;
+}
+/* line 160, ../WEB-INF/sass/style.scss */
+html.noScroll .panel .front, html.noScroll0 .panel .front {
   display: block;
   -webkit-transform: none !important;
   -webkit-transform-style: flat !important;
   -webkit-backface-visibility: visible;
   -webkit-transition: none !important;
+  overflow: scroll;
 }
-/* line 134, ../WEB-INF/sass/style.scss */
-html.noScroll .panel.flip .front {
+/* line 169, ../WEB-INF/sass/style.scss */
+html.noScroll .panel.flip .front, html.noScroll0 .panel.flip .front {
   display: none;
   -webkit-transform: none !important;
 }
-/* line 138, ../WEB-INF/sass/style.scss */
-html.noScroll .panel .back {
+/* line 173, ../WEB-INF/sass/style.scss */
+html.noScroll .panel .back, html.noScroll0 .panel .back {
   display: none;
   -webkit-transform: none !important;
   -webkit-transform-style: flat !important;
   -webkit-backface-visibility: visible;
   -webkit-transition: none !important;
 }
-/* line 145, ../WEB-INF/sass/style.scss */
-html.noScroll .panel.flip .back {
+/* line 180, ../WEB-INF/sass/style.scss */
+html.noScroll .panel.flip .back, html.noScroll0 .panel.flip .back {
   display: block;
   -webkit-transform: none !important;
 }
 
-/* line 151, ../WEB-INF/sass/style.scss */
+/* line 186, ../WEB-INF/sass/style.scss */
 .panel {
   -webkit-perspective: 600;
+  width: 210px;
+  height: 210px;
 }
-/* line 153, ../WEB-INF/sass/style.scss */
+/* line 192, ../WEB-INF/sass/style.scss */
 .panel .card {
   width: inherit;
   height: 190px;
 }
-/* line 159, ../WEB-INF/sass/style.scss */
+/* line 198, ../WEB-INF/sass/style.scss */
 .panel .meta {
   bottom: 0;
   right: 10px;
 }
 
-/* line 165, ../WEB-INF/sass/style.scss */
+/* line 204, ../WEB-INF/sass/style.scss */
 .panel .front {
   float: none;
   position: absolute;
@@ -633,6 +658,7 @@ html.noScroll .panel.flip .back {
   height: inherit;
   border: 1px solid #ccc;
   background: white;
+  overflow: scroll;
   -webkit-transform: rotateY(0deg);
   -webkit-transform-style: preserve-3d;
   -webkit-backface-visibility: hidden;
@@ -640,30 +666,30 @@ html.noScroll .panel.flip .back {
   -moz-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
 }
-/* line 188, ../WEB-INF/sass/style.scss */
+/* line 228, ../WEB-INF/sass/style.scss */
 .panel .front > img {
   width: 100%;
 }
-/* line 192, ../WEB-INF/sass/style.scss */
+/* line 232, ../WEB-INF/sass/style.scss */
 .panel .front > h1 {
   margin: 5px;
   padding: 0;
   font-size: 14px;
   line-height: 1.2em;
 }
-/* line 204, ../WEB-INF/sass/style.scss */
+/* line 244, ../WEB-INF/sass/style.scss */
 .panel .front > div {
-  font-size: 6px;
+  font-size: 10px;
 }
 
-/* line 208, ../WEB-INF/sass/style.scss */
+/* line 248, ../WEB-INF/sass/style.scss */
 .panel.flip .front {
   z-index: 900;
   border-color: #eee;
   -webkit-transform: rotateY(180deg);
 }
 
-/* line 216, ../WEB-INF/sass/style.scss */
+/* line 256, ../WEB-INF/sass/style.scss */
 .panel .back {
   float: none;
   position: absolute;
@@ -681,7 +707,7 @@ html.noScroll .panel.flip .back {
   -moz-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
 }
-/* line 237, ../WEB-INF/sass/style.scss */
+/* line 277, ../WEB-INF/sass/style.scss */
 .panel .back textarea {
   width: 100%;
   height: 100%;
@@ -691,35 +717,35 @@ html.noScroll .panel.flip .back {
   outline: none !important;
 }
 
-/* line 247, ../WEB-INF/sass/style.scss */
+/* line 287, ../WEB-INF/sass/style.scss */
 .panel.flip .back {
   z-index: 1000;
   -webkit-transform: rotateY(0deg);
 }
 
-/* line 255, ../WEB-INF/sass/style.scss */
+/* line 295, ../WEB-INF/sass/style.scss */
 .ui-effects-transfer {
   border: 2px dotted #268bd2;
 }
 
-/* line 257, ../WEB-INF/sass/style.scss */
+/* line 297, ../WEB-INF/sass/style.scss */
 .ui-state-highlight2 {
   border: 1px dotted blueviolet !important;
 }
 
-/* line 260, ../WEB-INF/sass/style.scss */
+/* line 300, ../WEB-INF/sass/style.scss */
 .ui-state-highlight3 {
   border: 1px dotted red !important;
   background-color: red !important;
   opacity: 1 !important;
 }
 
-/* line 266, ../WEB-INF/sass/style.scss */
+/* line 306, ../WEB-INF/sass/style.scss */
 .ui-resizable-handle {
   opacity: .5;
 }
 
-/* line 272, ../WEB-INF/sass/style.scss */
+/* line 312, ../WEB-INF/sass/style.scss */
 #deck canvas {
   z-index: 1000;
 }
