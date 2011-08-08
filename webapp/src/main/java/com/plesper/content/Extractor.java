@@ -53,6 +53,7 @@ public class Extractor {
     static {
         DEFAULT_CONFIG.setMinBytesForImages(100);
 
+        //FIXME
         //TODO move these to config file
         DEFAULT_CONFIG.setLocalStoragePath("/tmp/goose");
         DEFAULT_CONFIG.setImagemagickConvertPath("/usr/local/bin/convert");
@@ -137,7 +138,8 @@ public class Extractor {
 
     private void enrich(String url, String content) {
         CalaisResponse cresponse = null;
-        CalaisClient client = new CalaisRestClient("pyns63uge4wqjvg5knus4beu");
+        //FIXME use properties
+        CalaisClient client = new CalaisRestClient("XXX");
 
         try {
 

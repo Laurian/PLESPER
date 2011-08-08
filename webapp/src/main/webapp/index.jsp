@@ -66,6 +66,13 @@
                 Here is a video that outlines the concept.
             </p>
             
+            <a href="https://github.com/Laurian/PLESPER"><img style="z-index: 2025; position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>
+
+            <footer>
+<!--                <div class="copy">&copy;</div>-->
+                <div class="text">Copyleft <a href="http://laurian.gridinoc.name">Laurian Gridinoc</a>. All Wrongs Reserved.</div>
+                <a href="https://github.com/Laurian/PLESPER/commit/${it.root.properties["git.commit.id.abbrev"]}">version ${it.root.properties["git.commit.id.abbrev"]}</a>
+            </footer>
         </div>
     </div>
     
@@ -106,8 +113,7 @@
         <a href="https://github.com/Laurian/PLESPER/commit/${it.root.properties["git.commit.id.abbrev"]}">version ${it.root.properties["git.commit.id.abbrev"]}</a>
     </footer>-->
     
-<!--    <a href="https://github.com/Laurian/PLESPER"><img style="z-index: 1025; position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub"></a>-->
-
+    
     <script src="<%=prefix%>~${it.root.properties["git.commit.id.abbrev"]},script/lib/jquery-1.6.2.min,jquery.form,jquery.atmosphere,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4,underscore-1.1.5,backbone-0.5.0,visualsearch,sylvester,purecssmatrix,jquery.animtrans,jquery.zoomooz,../plugins,script.js"></script>
     <script src="http://www.google.com/jsapi"></script>
     <script>

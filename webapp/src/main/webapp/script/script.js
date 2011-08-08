@@ -442,7 +442,7 @@ function add(url, title, body, $transfer) {
 
     $article.append($title)
         .append($body);
-    $body.after('Visit <a href="'+url+'" target=_new>'+url+'</a>');
+    $body.after('<a class="link" href="'+url+'" target=_new>Open original page</a>');
                         
     // TODO have this cached at filter level
     $.get('./api/article/info', {
