@@ -33,6 +33,7 @@
             <param-value>43200</param-value>
         </init-param>
     </servlet>
+    <display-name>PLESPER</display-name>
     <filter>
         <filter-name>CachingFilter</filter-name>
         <filter-class>net.sf.ehcache.constructs.web.filter.SimpleCachingHeadersPageCachingFilter</filter-class>
