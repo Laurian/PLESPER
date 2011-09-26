@@ -56,8 +56,8 @@ public class Extractor {
         //FIXME
         //TODO move these to config file
         DEFAULT_CONFIG.setLocalStoragePath("/tmp/goose");
-        DEFAULT_CONFIG.setImagemagickConvertPath("/usr/bin/convert");
-        DEFAULT_CONFIG.setImagemagickIdentifyPath("/usr/bin/identify");
+        DEFAULT_CONFIG.setImagemagickConvertPath("/opt/local/bin/convert");
+        DEFAULT_CONFIG.setImagemagickIdentifyPath("/opt/local/bin/identify");
 
         NO_IMAGE_CONFIG.setEnableImageFetching(false);
 
