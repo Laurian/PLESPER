@@ -647,12 +647,11 @@ html.noScroll .panel, html.noScroll0 .panel {
   -webkit-transform-style: flat !important;
   -webkit-backface-visibility: visible;
   -webkit-transition: none !important;
-  width: 610px;
+  /*width: 610px;
   height: 410px;
-}
-/* line 209, ../WEB-INF/sass/style.scss */
-html.noScroll .panel .card, html.noScroll0 .panel .card {
-  height: 390px;
+  .card {
+  	height: 390px;
+  }*/
 }
 /* line 213, ../WEB-INF/sass/style.scss */
 html.noScroll .panel .front, html.noScroll0 .panel .front {
