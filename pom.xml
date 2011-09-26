@@ -30,7 +30,7 @@
     </build>
     <modules>
         <module>webapp</module>
-        <module>core</module>
+<!--        <module>core</module>-->
   </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
