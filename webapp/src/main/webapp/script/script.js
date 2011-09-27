@@ -476,7 +476,14 @@ function add(url, title, body, $transfer) {
         
         $title.html(data.title);
             //.after(data.text);
-        $body.html(data.text);
+        // $body.html(data.text);
+		// para
+		var para = data.text.split('\n');
+		for(p = 0; p < para.length; p++) {
+			var $p = $('<p></p>').text(para[p]);
+			$body.append($p);
+		} 
+
             
         if (data.image != null) {
             $image = $('<img src="' + data.image + '">');

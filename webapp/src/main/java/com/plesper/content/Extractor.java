@@ -100,6 +100,7 @@ public class Extractor {
         // TODO use Calais tags, etc
         //enrich(url, text);
 
+        System.out.println(text);
         return this;
     }
 
