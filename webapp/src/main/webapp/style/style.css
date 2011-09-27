@@ -641,6 +641,10 @@ body.spaceid #start {
 }
 
 /* line 200, ../WEB-INF/sass/style.scss */
+html.noScroll .zoom, html.noScroll0 .zoom {
+  display: none;
+}
+/* line 203, ../WEB-INF/sass/style.scss */
 html.noScroll .panel, html.noScroll0 .panel {
   -webkit-perspective: none !important;
   -webkit-transform: none !important;
@@ -653,7 +657,7 @@ html.noScroll .panel, html.noScroll0 .panel {
   	height: 390px;
   }*/
 }
-/* line 213, ../WEB-INF/sass/style.scss */
+/* line 216, ../WEB-INF/sass/style.scss */
 html.noScroll .panel .front, html.noScroll0 .panel .front {
   display: block;
   -webkit-transform: none !important;
@@ -662,12 +666,12 @@ html.noScroll .panel .front, html.noScroll0 .panel .front {
   -webkit-transition: none !important;
   overflow: auto;
 }
-/* line 223, ../WEB-INF/sass/style.scss */
+/* line 226, ../WEB-INF/sass/style.scss */
 html.noScroll .panel.flip .front, html.noScroll0 .panel.flip .front {
   display: none;
   -webkit-transform: none !important;
 }
-/* line 227, ../WEB-INF/sass/style.scss */
+/* line 230, ../WEB-INF/sass/style.scss */
 html.noScroll .panel .back, html.noScroll0 .panel .back {
   display: none;
   -webkit-transform: none !important;
@@ -675,30 +679,31 @@ html.noScroll .panel .back, html.noScroll0 .panel .back {
   -webkit-backface-visibility: visible;
   -webkit-transition: none !important;
 }
-/* line 234, ../WEB-INF/sass/style.scss */
+/* line 237, ../WEB-INF/sass/style.scss */
 html.noScroll .panel.flip .back, html.noScroll0 .panel.flip .back {
   display: block;
   -webkit-transform: none !important;
 }
 
-/* line 240, ../WEB-INF/sass/style.scss */
+/* line 243, ../WEB-INF/sass/style.scss */
 .panel {
   -webkit-perspective: 600;
   width: 210px;
   height: 210px;
 }
-/* line 246, ../WEB-INF/sass/style.scss */
+/* line 249, ../WEB-INF/sass/style.scss */
 .panel .card {
   width: inherit;
   height: 190px;
 }
-/* line 252, ../WEB-INF/sass/style.scss */
+/* line 255, ../WEB-INF/sass/style.scss */
 .panel .meta {
   bottom: 0;
   right: 10px;
 }
-/* line 256, ../WEB-INF/sass/style.scss */
+/* line 259, ../WEB-INF/sass/style.scss */
 .panel a.link {
+  font-size: 7px;
   display: block;
   width: 70%;
   margin: 10px auto;
@@ -709,13 +714,13 @@ html.noScroll .panel.flip .back, html.noScroll0 .panel.flip .back {
   color: #268bd2;
   text-decoration: none;
 }
-/* line 266, ../WEB-INF/sass/style.scss */
+/* line 270, ../WEB-INF/sass/style.scss */
 .panel a.link:hover {
   background-color: #268bd2;
   color: white;
 }
 
-/* line 274, ../WEB-INF/sass/style.scss */
+/* line 278, ../WEB-INF/sass/style.scss */
 .panel .front {
   float: none;
   position: absolute;
@@ -734,31 +739,45 @@ html.noScroll .panel.flip .back, html.noScroll0 .panel.flip .back {
   -moz-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
 }
-/* line 298, ../WEB-INF/sass/style.scss */
+/* line 302, ../WEB-INF/sass/style.scss */
 .panel .front > img {
   width: 100%;
 }
-/* line 302, ../WEB-INF/sass/style.scss */
+/* line 306, ../WEB-INF/sass/style.scss */
 .panel .front > h1 {
   margin: 5px;
   padding: 0;
   font-size: 14px;
   line-height: 1.2em;
 }
-/* line 314, ../WEB-INF/sass/style.scss */
+/* line 318, ../WEB-INF/sass/style.scss */
 .panel .front > div {
-  font-size: 10px;
+  font-size: 7px;
   padding: 5px;
 }
+/* line 322, ../WEB-INF/sass/style.scss */
+.panel .front > div menu {
+  background-color: #ebebeb;
+  margin: 0;
+  padding: 5px;
+}
+/* line 327, ../WEB-INF/sass/style.scss */
+.panel .front > div menu span {
+  color: #268bd2;
+}
+/* line 332, ../WEB-INF/sass/style.scss */
+.panel .front > div p + menu {
+  margin-top: -7px;
+}
 
-/* line 320, ../WEB-INF/sass/style.scss */
+/* line 337, ../WEB-INF/sass/style.scss */
 .panel.flip .front {
   z-index: 900;
   border-color: #eee;
   -webkit-transform: rotateY(180deg);
 }
 
-/* line 328, ../WEB-INF/sass/style.scss */
+/* line 345, ../WEB-INF/sass/style.scss */
 .panel .back {
   float: none;
   position: absolute;
@@ -776,7 +795,7 @@ html.noScroll .panel.flip .back, html.noScroll0 .panel.flip .back {
   -moz-transition: all .4s ease-in-out;
   -webkit-transition: all .4s ease-in-out;
 }
-/* line 349, ../WEB-INF/sass/style.scss */
+/* line 366, ../WEB-INF/sass/style.scss */
 .panel .back textarea {
   width: 100%;
   height: 100%;
@@ -786,45 +805,45 @@ html.noScroll .panel.flip .back, html.noScroll0 .panel.flip .back {
   outline: none !important;
 }
 
-/* line 359, ../WEB-INF/sass/style.scss */
+/* line 376, ../WEB-INF/sass/style.scss */
 .panel.flip .back {
   z-index: 1000;
   -webkit-transform: rotateY(0deg);
 }
 
-/* line 367, ../WEB-INF/sass/style.scss */
+/* line 384, ../WEB-INF/sass/style.scss */
 .ui-effects-transfer {
   border: 2px dotted #268bd2;
 }
 
-/* line 369, ../WEB-INF/sass/style.scss */
+/* line 386, ../WEB-INF/sass/style.scss */
 .ui-state-highlight2 {
   border: 1px dotted blueviolet !important;
 }
 
-/* line 372, ../WEB-INF/sass/style.scss */
+/* line 389, ../WEB-INF/sass/style.scss */
 .ui-state-highlight3 {
   border: 1px dotted red !important;
   background-color: red !important;
   opacity: 1 !important;
 }
 
-/* line 378, ../WEB-INF/sass/style.scss */
+/* line 395, ../WEB-INF/sass/style.scss */
 .ui-resizable-handle {
   opacity: .5;
 }
 
-/* line 384, ../WEB-INF/sass/style.scss */
+/* line 401, ../WEB-INF/sass/style.scss */
 #deck canvas {
   z-index: 1000;
 }
 
-/* line 390, ../WEB-INF/sass/style.scss */
+/* line 407, ../WEB-INF/sass/style.scss */
 .card ::-webkit-scrollbar {
   -webkit-appearance: none;
   width: 3px;
 }
-/* line 395, ../WEB-INF/sass/style.scss */
+/* line 412, ../WEB-INF/sass/style.scss */
 .card ::-webkit-scrollbar-thumb {
   border-radius: 4px;
   background-color: #268bd2;

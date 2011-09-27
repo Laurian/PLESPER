@@ -3,27 +3,41 @@
 $(function(){
             
     $(".panel").live('click', function(evt) {
+		//alert(0);
             if (!$('html').hasClass('noScroll0')) return;
             //$('html').addClass('noScroll0');
             if (isoOn) $('#deck').isotope('reLayout');
             $(this).zoomTo({targetsize:0.75, duration:600});
             evt.stopPropagation();
-            
+			//zoomed
+			$(".panel").not(this).removeClass('focus');
+            $(this).addClass('focus');
     });
     
+	//$(".panel").live();
+	
     $(".zoom").live('click', function(evt){
+		//alert(1);
         if (!$('html').hasClass('noScroll0')) {
             $('html').addClass('noScroll0');
             if (isoOn) $('#deck').isotope('reLayout');
             evt.stopPropagation();
-            $(this).parents('.panel').zoomTo({targetsize:0.75, duration:600});
-        } else {
+            
+			var $tile = $(this).parents('.panel');
+			$tile.zoomTo({targetsize:0.75, duration:600});
+			//zoomed
+			$(".panel").not($tile).removeClass('focus');
+			$tile.addClass('focus');
+			
+        } else {			
             $('html').removeClass('noScroll0');
             evt.stopPropagation();
             $("body").zoomTo({targetsize:1.0, duration:600});
             if (isoOn) $('#deck').isotope('reLayout');
         }
     });
+
+
     
     //fixme
 //    $(".panel").click(function(evt) {
@@ -31,6 +45,7 @@ $(function(){
 //    });
 
     $(window).click(function(evt) {
+			$(".panel").removeClass('focus');
             $('html').removeClass('noScroll0');
             $("body").zoomTo({targetsize:1.0, duration:600});
             evt.stopPropagation();
@@ -90,9 +105,12 @@ $(function(){
                 $("#radio").buttonset();
                 
                 $('#radio0').click(function() {
+					$('#cse').show();
                     iso();
                 });
                 $('#radio3').click(function() {
+					//kill search
+					$('#cse').hide();
                     plumb();        
                 });
 		
@@ -482,6 +500,15 @@ function add(url, title, body, $transfer) {
 		for(p = 0; p < para.length; p++) {
 			var $p = $('<p></p>').text(para[p]);
 			$body.append($p);
+			$p.click(function() {
+				$('.front menu').remove();
+				var $menu = $('<menu>tweet ... <span>open</span></menu>');
+				$(this).after($menu);
+				
+				$menu.find('span').click(function() {
+					alert(1);
+				});
+			});
 		} 
 
             
@@ -577,7 +604,28 @@ function add(url, title, body, $transfer) {
 //            jsPlumb.repaintEverything();
 //        }
 //    });
-////                        
+////                
+
+        $element.addSwipeEvents().
+		  bind('doubletap', function(evt, touch) {
+		    if (!$('html').hasClass('noScroll0')) {
+	            $('html').addClass('noScroll0');
+	            if (isoOn) $('#deck').isotope('reLayout');
+	            evt.stopPropagation();
+
+				var $tile = $(this);//.parents('.panel');
+				$tile.zoomTo({targetsize:0.75, duration:600});
+				//zoomed
+				$(".panel").not($tile).removeClass('focus');
+				$tile.addClass('focus');
+
+	        } else {			
+	            $('html').removeClass('noScroll0');
+	            evt.stopPropagation();
+	            $("body").zoomTo({targetsize:1.0, duration:600});
+	            if (isoOn) $('#deck').isotope('reLayout');
+	        }
+		  })
 }
 
 var isoOn = true; //ugly, wrong, etc.

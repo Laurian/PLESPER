@@ -21,7 +21,8 @@
     <meta name="author" content="">
 
     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory: 	
     mathiasbynens.be/notes/touch-icons -->
@@ -118,8 +119,8 @@
     </footer>-->
     
     
-    <script src="<%=prefix%>~${it.root.properties["git.commit.id.abbrev"]},script/lib/jquery-1.6.2.min,jquery.form,jquery.atmosphere,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4,underscore-1.1.5,backbone-0.5.0,visualsearch,sylvester,purecssmatrix,jquery.animtrans,jquery.zoomooz,../plugins,script.js"></script>
-    <script src="http://www.google.com/jsapi"></script>
+    <script src="<%=prefix%>~${it.root.properties["git.commit.id.abbrev"]},script/lib/jquery-1.6.2.min,jquery.form,jquery.atmosphere,jquery.isotope,jquery-ui-1.8.14.custom,jquery.terminal-0.3.4,underscore-1.1.5,backbone-0.5.0,visualsearch,sylvester,purecssmatrix,jquery.animtrans,jquery.zoomooz,jquery.doubletap,../plugins,script.js"></script>
+    <script src="http://www.google.com/jsapi?key=ABQIAAAAGfiu1yk6ZqlHApj0L1WTABTwM0brOpm-All5BF6PoaKBxRWWERRAIOKwdcGx4JGQ5LRaP-yQpGJHpg"></script>
     <script>
 var _gaq=[['_setAccount','UA-2526475-5'],['_trackPageview'],['_trackPageLoadTime']];
 (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;

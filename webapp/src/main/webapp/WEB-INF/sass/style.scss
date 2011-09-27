@@ -197,6 +197,9 @@ body.spaceid {
 
 ///// http://css3playground.com/flip-card.php
 html.noScroll, html.noScroll0 {
+	.zoom {
+		display:	none;
+	}
 	.panel {
 		-webkit-perspective: none !important;
 		-webkit-transform: none !important;
@@ -254,6 +257,7 @@ html.noScroll, html.noScroll0 {
 		right:	10px;
 	}
 	a.link {
+		font-size:	7px;
 		display: block;
 		width:	70%;
 		margin: 10px auto;
@@ -312,9 +316,22 @@ html.noScroll, html.noScroll0 {
 			}
 			
 			>div {
-				font-size: 10px;
+				font-size: 7px;
 				padding:	5px;
 				
+				menu {
+					background-color:	$mercury;
+					margin:	0;
+					padding:	5px;
+					
+					span {
+						color:	$blue;
+					}
+				}
+				
+				p + menu {
+					margin-top:	-7px;
+				}
 			}
 }
 .panel.flip .front {
@@ -398,6 +415,10 @@ html.noScroll, html.noScroll0 {
     	-webkit-box-shadow: 0 0 1px rgba(255,255,255,.5);
 	}
 
+}
+
+.focus {
+	//outline:	1px solid white;
 }
 
 /////
