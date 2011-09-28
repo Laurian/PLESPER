@@ -1,5 +1,4 @@
 // THIS IS A MESS!
-
 package com.plesper.content;
 
 import java.util.logging.Level;
@@ -9,6 +8,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import java.util.HashMap;
+
+import org.json.JSONArray;
+
+//import org.apache.commons.logging.LogFactory;
+
+import com.embedly.api.Api;
+import java.util.ArrayList;
 
 import com.jimplush.goose.Article;
 import com.jimplush.goose.Configuration;
@@ -71,16 +79,34 @@ public class Extractor {
     public HashMap calais;
 //    //public SyndFeed feed;
 
+//    @Path("/info2")
+//    @GET
+//    @Produces("application/json")
+//    public Extractor getArticleData2(@QueryParam("url") String url) {
+//        //embed.ly
+//
+//        Api api = new Api("Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)",
+//                "xxxx"); // <-- put key here
+//
+//        HashMap<String, Object> params = new HashMap<String, Object>();
+//        params.put("url", "http://www.youtube.com/watch?v=sPbJ4Z5D-n4&feature=topvideos");
+//
+//        JSONArray json = api.oembed(params);
+//        System.out.println("" + json);
+//
+//        return this;
+//    }
+
     @Path("/info")
     @GET
     @Produces("application/json")
     public Extractor getArticleData(@QueryParam("url") String url) {
 
         //TODO parallelise this
-        
+
         // TODO import feed items
         //feed(url);
-        
+
         oEmbed(url);
 
         Article a = getArticle(url);
@@ -89,7 +115,7 @@ public class Extractor {
         text = a.getCleanedArticleText();
         domain = a.getDomain();
         link = a.getCanonicalLink();
-        
+
         // TODO fork & fix the Goose for this
         //images = a.getImageCandidates();
 
@@ -205,14 +231,14 @@ public class Extractor {
             if (entries == null) {
                 entries = new ArrayList<SyndEntry>();
             }
-            
+
             Iterator<SyndEntry> iterator = entries.iterator();
-            
+
             System.out.println("FEED?----------------------------------------------");
             while (iterator.hasNext()) {
                 System.out.println(iterator.next().getTitle());
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(Extractor.class.getName()).log(Level.SEVERE, null, ex);
         }

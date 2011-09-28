@@ -15,7 +15,7 @@ public class Demo {
   public static void main(String[] args) {
       //Api.setLog(LogFactory.getLog(Api.class));
       Api api = new Api("Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)",
-                    "287d6db8c8c511e08c7a4040d3dc5c07"); // <-- put key here
+                    "xxxx"); // <-- put key here
      
       HashMap<String, Object> params = new HashMap<String, Object>();
       params.put("url", "http://www.youtube.com/watch?v=sPbJ4Z5D-n4&feature=topvideos");
@@ -38,7 +38,7 @@ public class Demo {
       System.out.println("------------------------------------------------------");
 
       api = new Api("Mozilla/5.0 (compatible; mytestapp/1.0; my@email.com)",
-                    "287d6db8c8c511e08c7a4040d3dc5c07"); // <-- put key here
+                    "xxxx"); // <-- put key here
       params = new HashMap<String, Object>();
       params.put("url", "http://www.guardian.co.uk/media/2011/jan/21/andy-coulson-phone-hacking-statement");
 
