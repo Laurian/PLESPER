@@ -448,7 +448,7 @@ $(function(){
 	 });
          
 var inc = 0; //ugly
-function add(url, title, body, $transfer) {
+function add(url, title, body, $transfer, skip) {
 ////
 
 
@@ -460,10 +460,13 @@ function add(url, title, body, $transfer) {
 
     $article.append($title)
         .append($body);
+	if (skip) {
+		$body.after('<select><option>agrees with</option><option>cites</option><option>cites as authority</option><option>cites as data source</option><option>cites as evidence</option><option>cites as metadata document</option><option>cites as related</option><option>cites as source document</option><option>cites for information</option><option>confirms</option><option>contains assertion from</option><option>corrects</option><option>credits</option><option>critiques</option><option>disagrees with</option><option>discusses</option><option>disputes</option><option>documents</option><option>extends</option><option>gives background to</option><option>gives support to</option><option>includes excerpt from</option><option>includes quotation from</option><option>is agreed with by</option><option>is cited as authority by</option><option>is cited as data source by</option><option>is cited as evidence by</option><option>is cited as metadata document by</option><option>is cited as related by</option><option>is cited as source document by</option><option>is cited by</option><option>is cited for information by</option><option>is confirmed by</option><option>is corrected by</option><option>is credited by</option><option>is critiqued by</option><option>is disagreed with by</option><option>is discussed by</option><option>is disputed by</option><option>is documented by</option><option>is extended by</option><option>is parodied by</option><option>is plagiarized by</option><option>is qualified by</option><option>is refuted by</option><option>is reviewed by</option><option>is ridiculed by</option><option>is supported by</option><option>is updated by</option><option>obtains background from</option><option>obtains support from</option><option>parodies</option><option>plagiarizes</option><option>provides assertion for</option><option>provides data for</option><option>provides excerpt for</option><option>provides method for</option><option>provides quotation for</option><option>qualifies</option><option>refutes</option><option>reviews</option><option>ridicules</option><option>shares authors with</option><option>supports</option><option>updates</option><option>uses data from</option><option>uses method in</option></select>');
+	}
     $body.after('<a class="link" href="'+url+'" target=_new>Open original page</a>');
                         
     // TODO have this cached at filter level
-    $.get('./api/article/info', {
+    if (!skip) $.get('./api/article/info', {
         url:    url
     }, function(data) {
         //console.log(data);
@@ -502,12 +505,19 @@ function add(url, title, body, $transfer) {
 			$body.append($p);
 			$p.click(function() {
 				$('.front menu').remove();
-				var $menu = $('<menu>tweet ... <span>open</span></menu>');
+				var $menu = $('<menu> <span class="connect">connect</span> | tweet | <span class="open">open</span></menu>');
 				$(this).after($menu);
 				
-				$menu.find('span').click(function() {
-					alert(1);
+				$menu.find('.open').click(function() {
+					//add(url, title, body, $transfer)
+					//alert($menu.prev().text());
+					add(url, data.title, $menu.prev().text(), $menu, true);
 				});
+				
+				$menu.find('.connect').click(function(event) {
+					event.stopPropagation()
+					$(this).replaceWith('<select><option>agrees with</option><option>cites</option><option>cites as authority</option><option>cites as data source</option><option>cites as evidence</option><option>cites as metadata document</option><option>cites as related</option><option>cites as source document</option><option>cites for information</option><option>confirms</option><option>contains assertion from</option><option>corrects</option><option>credits</option><option>critiques</option><option>disagrees with</option><option>discusses</option><option>disputes</option><option>documents</option><option>extends</option><option>gives background to</option><option>gives support to</option><option>includes excerpt from</option><option>includes quotation from</option><option>is agreed with by</option><option>is cited as authority by</option><option>is cited as data source by</option><option>is cited as evidence by</option><option>is cited as metadata document by</option><option>is cited as related by</option><option>is cited as source document by</option><option>is cited by</option><option>is cited for information by</option><option>is confirmed by</option><option>is corrected by</option><option>is credited by</option><option>is critiqued by</option><option>is disagreed with by</option><option>is discussed by</option><option>is disputed by</option><option>is documented by</option><option>is extended by</option><option>is parodied by</option><option>is plagiarized by</option><option>is qualified by</option><option>is refuted by</option><option>is reviewed by</option><option>is ridiculed by</option><option>is supported by</option><option>is updated by</option><option>obtains background from</option><option>obtains support from</option><option>parodies</option><option>plagiarizes</option><option>provides assertion for</option><option>provides data for</option><option>provides excerpt for</option><option>provides method for</option><option>provides quotation for</option><option>qualifies</option><option>refutes</option><option>reviews</option><option>ridicules</option><option>shares authors with</option><option>supports</option><option>updates</option><option>uses data from</option><option>uses method in</option></select>');
+				})
 			});
 		} 
 
